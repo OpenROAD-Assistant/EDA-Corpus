@@ -1,0 +1,2519 @@
+code,prompt
+"# Invert the rotation and the location of instances with the library cell type 'NAND2_X1'.
+
+# Get the design block
+block = design.getBlock()
+
+# Get all instances in the block
+insts = block.getInsts()
+
+# Iterate through all instances in the block
+for inst in insts:
+    # Check if the name of the library cell type is 'NAND2_X1'
+    if inst.getMaster().getName() == 'NAND2_X1':
+        # Invert the rotation and the location of the instance
+        transform = inst.getTransform()
+        transform.invert()
+        inst.setTransform(transform)",Invert the rotation and the location of instances with the library cell type 'NAND2_X1'
+"# Horizontally flip the rotation of the instances whose library cell types are 'AND2_X1'
+
+#define flipping function
+def flipX(value):
+    if value == ""R0"":
+      return ""MX""
+    elif value == ""R90"":
+      return ""MYR90""
+    elif value == ""R180"":
+      return ""MY""
+    elif value == ""R270"":
+      return ""MXR90""
+    elif value == ""MY"":
+      return ""R180""
+    elif value == ""MYR90"":
+      return ""R90""
+    elif value == ""MX"":
+      return ""R0""
+    elif value == ""MXR90"":
+      return ""R270""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all instances in the block
+insts = block.getInsts()
+
+# Iterate through all instances in the block
+for inst in insts:
+    # Check if the library cell type is 'AND2_X1'
+    if inst.getMaster().getName() == 'AND2_X1':
+        # Horizontally flip the rotation of the instance
+        orient = inst.getOrient()
+        orient = flipX(orient)
+        inst.setOrient(orient)",Horizontally flip the rotation of the instances whose library cell types are 'AND2_X1'
+"# Horizontally flip the rotation of the instances whose library cell types are 'NAND2_X1'
+
+#define flipping function
+def flipX(value):
+    if value == ""R0"":
+      return ""MX""
+    elif value == ""R90"":
+      return ""MYR90""
+    elif value == ""R180"":
+      return ""MY""
+    elif value == ""R270"":
+      return ""MXR90""
+    elif value == ""MY"":
+      return ""R180""
+    elif value == ""MYR90"":
+      return ""R90""
+    elif value == ""MX"":
+      return ""R0""
+    elif value == ""MXR90"":
+      return ""R270""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all instances in the block
+insts = block.getInsts()
+
+# Iterate through all instances in the block
+for inst in insts:
+    # Check if the library cell type is 'NAND2_X1'
+    if inst.getMaster().getName() == 'NAND2_X1':
+        # Horizontally flip the rotation of the instance
+        orient = inst.getTransform().getOrient()
+        orient = flipX(orient)
+        inst.setOrient(orient)",Horizontally flip the rotation of the instances whose library cell types are 'NAND2_X1'
+"# Horizontally flip the rotation of the instances whose library cell types are 'AND2_X1'
+
+#define flipping function
+def flipX(value):
+    if value == ""R0"":
+      return ""MX""
+    elif value == ""R90"":
+      return ""MYR90""
+    elif value == ""R180"":
+      return ""MY""
+    elif value == ""R270"":
+      return ""MXR90""
+    elif value == ""MY"":
+      return ""R180""
+    elif value == ""MYR90"":
+      return ""R90""
+    elif value == ""MX"":
+      return ""R0""
+    elif value == ""MXR90"":
+      return ""R270""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all instances in the block
+insts = block.getInsts()
+
+# Iterate through all instances in the block
+for inst in insts:
+    # Check if the library cell type is 'AND2_X1'
+    if inst.getMaster().getName() == 'AND2_X1':
+        # Horizontally flip the rotation of the instance
+        transform = inst.getTransform()
+        orient = transform.getOrient()
+        orient = flipX(orient)
+        transform.setOrient(orient)
+        inst.setTransform(transform)",Horizontally flip the rotation of the instances whose library cell types are 'AND2_X1'
+"# Vertically flip the rotation of the instances whose library cell types are 'AND2_X1'
+
+#define flipping function
+def flipY(value):
+    if value == ""R0"":
+      return ""MY""
+    elif value == ""R90"":
+      return ""MXR90""
+    elif value == ""R180"":
+      return ""MX""
+    elif value == ""R270"":
+      return ""MYR90""
+    elif value == ""MY"":
+      return ""R0""
+    elif value == ""MYR90"":
+      return ""R270""
+    elif value == ""MX"":
+      return ""R180""
+    elif value == ""MXR90"":
+      return ""R90""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all instances in the block
+insts = block.getInsts()
+
+# Iterate through all instances in the block
+for inst in insts:
+    # Check if the library cell type is 'AND2_X1'
+    if inst.getMaster().getName() == 'AND2_X1':
+        # Vertically flip the rotation of the instance
+        transform = inst.getTransform()
+        orient = transform.getOrient()
+        orient = flipY(orient)
+        transform.setOrient(orient)
+        inst.setTransform(transform)",Vertically flip the rotation of the instances whose library cell types are 'AND2_X1'
+"# Vertically flip the rotation of the instances whose library cell types are 'AND2_X1'
+
+#define flipping function
+def flipY(value):
+    if value == ""R0"":
+      return ""MY""
+    elif value == ""R90"":
+      return ""MXR90""
+    elif value == ""R180"":
+      return ""MX""
+    elif value == ""R270"":
+      return ""MYR90""
+    elif value == ""MY"":
+      return ""R0""
+    elif value == ""MYR90"":
+      return ""R270""
+    elif value == ""MX"":
+      return ""R180""
+    elif value == ""MXR90"":
+      return ""R90""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all instances in the block
+insts = block.getInsts()
+
+# Iterate through all instances in the block
+for inst in insts:
+    # Check if the library cell type is 'NAND2_X1'
+    if inst.getMaster().getName() == 'NAND2_X1':
+        # Vertically flip the rotation of the instance
+        transform = inst.getTransform()
+        orient = transform.getOrient()
+        orient = flipY(orient)
+        inst.setOrient(orient)",Vertically flip the rotation of the instances whose library cell types are 'NAND2_X1'
+"# Vertically flip the rotation of the instances whose library cell types are 'AND2_X1'
+
+#define flipping function
+def flipY(value):
+    if value == ""R0"":
+      return ""MY""
+    elif value == ""R90"":
+      return ""MXR90""
+    elif value == ""R180"":
+      return ""MX""
+    elif value == ""R270"":
+      return ""MYR90""
+    elif value == ""MY"":
+      return ""R0""
+    elif value == ""MYR90"":
+      return ""R270""
+    elif value == ""MX"":
+      return ""R180""
+    elif value == ""MXR90"":
+      return ""R90""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all instances in the block
+insts = block.getInsts()
+
+# Iterate through all instances in the block
+for inst in insts:
+    # Check if the library cell type is 'AND2_X1'
+    if inst.getMaster().getName() == 'AND2_X1':
+        # Vertically flip the rotation of the instance
+        orient = inst.getOrient()
+        orient = flipY(orient)
+        inst.setOrient(orient)",Vertically flip the rotation of the instances whose library cell types are 'AND2_X1'
+"# Set the rotation of the instance '_411_' to 'MX'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('_411_')
+
+# Set the rotation of the instance to 'MX'
+inst.setOrient('MX')",set the rotation of the instance '_411_' to 'MX'
+"# Set the rotation of the instance '_411_' to 'MX'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('_411_')
+
+# Set the rotation of the instance to 'MX'
+transform = inst.getTransform()
+transform.setOrient('MX')
+inst.setTransform(transform)",set the rotation of the instance '_411_' to 'MX'
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'input1' as mentioned in the prompt
+inst = block.findInst('input1')
+# Get the orientation of the instance
+orient = inst.getOrient()
+# Check if the orientation is ""MX""
+if orient == 'MX':
+        # Set the orientation of the instance to ""R0""
+        inst.setOrient('R0')
+elif orient == 'R0':
+        # Set the orientation of the instance to ""MX""
+        inst.setOrient('MX')",Change the rotation of an instance 'input0'. If the rotation is 'MX' change it to 'R0' and vise versa
+"# Set the rotation of the instance '_411_' to 'R0'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('_411_')
+
+# Set the rotation of the instance to 'R0'
+inst.setOrient('R0')",set the rotation of the instance '_411_' to 'R0'
+"# Set the rotation of the instance '_411_' to 'R0'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('_411_')
+
+# Set the rotation of the instance to 'R0'
+transform = inst.getTransform()
+transform.setOrient('R0')
+inst.setTransform(transform)",set the rotation of the instance '_411_' to 'R0'
+"# Set the rotation of the instance 'reg[0]_123' to 'R0'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('reg[0]_123')
+
+# Set the rotation of the instance to 'R0'
+inst.setOrient('R0')",set the rotation of the instance 'reg[0]_123' to 'R0'
+"# Set the rotation of the instance 'reg[0]_123' to 'R0'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('reg[0]_123')
+
+# Set the rotation of the instance to 'R0'
+transform = inst.getTransform()
+transform.setOrient('R0')
+inst.setTransform(transform)",set the rotation of the instance 'reg[0]_123' to 'R0'
+"# Set the rotation of the instance '118_i[0]' to 'R90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('118_i[0]')
+
+# Set the rotation of the instance to 'R90'
+inst.setOrient('R90')",set the rotation of the instance '118_i[0]' to 'R90'
+"# Set the rotation of the instance '118_i[0]' to 'R90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('118_i[0]')
+
+# Set the rotation of the instance to 'R90'
+transform = inst.getTransform()
+transform.setOrient('R90')
+inst.setTransform(transform)",set the rotation of the instance '118_i[0]' to 'R90'
+"# Set the rotation of the instance 'super40' to 'R90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('super40')
+
+# Set the rotation of the instance to 'R90'
+inst.setOrient('R90')",set the rotation of the instance 'super40' to 'R90'
+"# Set the rotation of the instance 'super40' to 'R90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('super40')
+
+# Set the rotation of the instance to 'R90'
+transform = inst.getTransform()
+transform.setOrient('R90')
+inst.setTransform(transform)",set the rotation of the instance 'super40' to 'R90'
+"# Set the rotation of the instance '118_i[0]' to 'R180'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('118_i[0]')
+
+# Set the rotation of the instance to 'R180'
+inst.setOrient('R180')",set the rotation of the instance '118_i[0]' to 'R180'
+"# Set the rotation of the instance '118_i[0]' to 'R180'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('118_i[0]')
+
+# Set the rotation of the instance to 'R180'
+transform = inst.getTransform()
+transform.setOrient('R180')
+inst.setTransform(transform)",set the rotation of the instance '118_i[0]' to 'R180'
+"# Set the rotation of the instance 'super40' to 'R180'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('super40')
+
+# Set the rotation of the instance to 'R180'
+inst.setOrient('R180')",set the rotation of the instance 'super40' to 'R180'
+"# Set the rotation of the instance 'super40' to 'R180'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('super40')
+
+# Set the rotation of the instance to 'R180'
+transform = inst.getTransform()
+transform.setOrient('R180')
+inst.setTransform(transform)",set the rotation of the instance 'super40' to 'R180'
+"# Set the rotation of the instance 'icache_1/_21661_' to 'R270'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Set the rotation of the instance to 'R270'
+inst.setOrient('R270')",set the rotation of the instance 'icache_1/_21661_' to 'R270'
+"# Set the rotation of the instance 'icache_1/_21661_' to 'R270'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Set the rotation of the instance to 'R270'
+transform = inst.getTransform()
+transform.setOrient('R270')
+inst.setTransform(transform)",set the rotation of the instance 'icache_1/_21661_' to 'R270'
+"# Set the rotation of the instance 'input31' to 'R270'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Set the rotation of the instance to 'R270'
+inst.setOrient('R270')",set the rotation of the instance 'input31' to 'R270'
+"# Set the rotation of the instance 'input31' to 'R270'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Set the rotation of the instance to 'R270'
+transform = inst.getTransform()
+transform.setOrient('R270')
+inst.setTransform(transform)",set the rotation of the instance 'input31' to 'R270'
+"# Set the rotation of the instance 'icache_1/_21661_' to 'MY'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Set the rotation of the instance to 'MY'
+inst.setOrient('MY')",set the rotation of the instance 'icache_1/_21661_' to 'MY'
+"# Set the rotation of the instance 'icache_1/_21661_' to 'MY'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Set the rotation of the instance to 'MY'
+transform = inst.getTransform()
+transform.setOrient('MY')
+inst.setTransform(transform)",set the rotation of the instance 'icache_1/_21661_' to 'MY'
+"# Set the rotation of the instance 'input31' to 'MY'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Set the rotation of the instance to 'MY'
+inst.setOrient('MY')",set the rotation of the instance 'input31' to 'MY'
+"# Set the rotation of the instance 'input31' to 'MY'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Set the rotation of the instance to 'MY'
+transform = inst.getTransform()
+transform.setOrient('MY')
+inst.setTransform(transform)",set the rotation of the instance 'input31' to 'MY'
+"# Set the rotation of the instance 'icache_1/_21661_' to 'MYR90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Set the rotation of the instance to 'MYR90'
+inst.setOrient('MYR90')",set the rotation of the instance 'icache_1/_21661_' to 'MYR90'
+"# Set the rotation of the instance 'icache_1/_21661_' to 'MYR90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Set the rotation of the instance to 'MYR90'
+transform = inst.getTransform()
+transform.setOrient('MYR90')
+inst.setTransform(transform)",set the rotation of the instance 'icache_1/_21661_' to 'MYR90'
+"# Set the rotation of the instance 'input31' to 'MYR90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Set the rotation of the instance to 'MYR90'
+inst.setOrient('MYR90')",set the rotation of the instance 'input31' to 'MYR90'
+"# Set the rotation of the instance 'input31' to 'MYR90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Set the rotation of the instance to 'MYR90'
+transform = inst.getTransform()
+transform.setOrient('MYR90')
+inst.setTransform(transform)",set the rotation of the instance 'input31' to 'MYR90'
+"# Set the rotation of the instance 'icache_1/_21661_' to 'MX'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Set the rotation of the instance to 'MX'
+inst.setOrient('MX')",set the rotation of the instance 'icache_1/_21661_' to 'MX'
+"# Set the rotation of the instance 'icache_1/_21661_' to 'MX'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Set the rotation of the instance to 'MX'
+transform = inst.getTransform()
+transform.setOrient('MX')
+inst.setTransform(transform)",set the rotation of the instance 'icache_1/_21661_' to 'MX'
+"# Set the rotation of the instance 'input31' to 'MX'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Set the rotation of the instance to 'MX'
+inst.setOrient('MX')",set the rotation of the instance 'input31' to 'MX'
+"# Set the rotation of the instance 'input31' to 'MX'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Set the rotation of the instance to 'MX'
+transform = inst.getTransform()
+transform.setOrient('MX')
+inst.setTransform(transform)",set the rotation of the instance 'input31' to 'MX'
+"# Set the rotation of the instance 'icache_1/_21661_' to 'MXR90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Set the rotation of the instance to 'MXR90'
+inst.setOrient('MXR90')",set the rotation of the instance 'icache_1/_21661_' to 'MXR90'
+"# Set the rotation of the instance 'icache_1/_21661_' to 'MXR90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Set the rotation of the instance to 'MXR90'
+transform = inst.getTransform()
+transform.setOrient('MXR90')
+inst.setTransform(transform)",set the rotation of the instance 'icache_1/_21661_' to 'MXR90'
+"# Set the rotation of the instance 'input31' to 'MXR90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Set the rotation of the instance to 'MXR90'
+inst.setOrient('MXR90')",set the rotation of the instance 'input31' to 'MXR90'
+"# Set the rotation of the instance 'input31' to 'MXR90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Set the rotation of the instance to 'MXR90'
+transform = inst.getTransform()
+transform.setOrient('MXR90')
+inst.setTransform(transform)",set the rotation of the instance 'input31' to 'MXR90'
+"# Change the rotation of the instance 'wire2741' to 'R0'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('wire2741')
+
+# Change the rotation of the instance to 'R0'
+inst.setOrient('R0')",change the rotation of the instance 'wire2741' to 'R0'
+"# Change the rotation of the instance 'wire2741' to 'R0'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('wire2741')
+
+# Change the rotation of the instance to 'R0'
+transform = inst.getTransform()
+transform.setOrient('R0')
+inst.setTransform(transform)",change the rotation of the instance 'wire2741' to 'R0'
+"# Change the rotation of the instance 'wire2741' to 'R0'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('wire2741')
+
+# Change the rotation of the instance to 'R0'
+inst.setOrient('R0')",Change the rotation of the instance 'wire2741' to 'R0'
+"# Change the rotation of the instance 'wire2741' to 'R0'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('wire2741')
+
+# Change the rotation of the instance to 'R0'
+transform = inst.getTransform()
+transform.setOrient('R0')
+inst.setTransform(transform)",Change the rotation of the instance 'wire2741' to 'R0'
+"# Change the rotation of the instance 'max_cap2482' to 'R90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('max_cap2482')
+
+# Change the rotation of the instance to 'R90'
+inst.setOrient('R90')",Change the rotation of the instance 'max_cap2482' to 'R90'
+"# Change the rotation of the instance 'max_cap2482' to 'R90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('max_cap2482')
+
+# Change the rotation of the instance to 'R90'
+transform = inst.getTransform()
+transform.setOrient('R90')
+inst.setTransform(transform)",Change the rotation of the instance 'max_cap2482' to 'R90'
+"# Change the rotation of the instance 'super40' to 'R90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('super40')
+
+# Change the rotation of the instance to 'R90'
+inst.setOrient('R90')",Change the rotation of the instance 'super40' to 'R90'
+"# Change the rotation of the instance 'super40' to 'R90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('super40')
+
+# Change the rotation of the instance to 'R90'
+transform = inst.getTransform()
+transform.setOrient('R90')
+inst.setTransform(transform)",Change the rotation of the instance 'super40' to 'R90'
+"# Change the rotation of the instance '118_i[0]' to 'R180'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('118_i[0]')
+
+# Change the rotation of the instance to 'R180'
+inst.setOrient('R180')",Change the rotation of the instance '118_i[0]' to 'R180'
+"# Change the rotation of the instance '118_i[0]' to 'R180'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('118_i[0]')
+
+# Change the rotation of the instance to 'R180'
+transform = inst.getTransform()
+transform.setOrient('R180')
+inst.setTransform(transform)",Change the rotation of the instance '118_i[0]' to 'R180'
+"# Change the rotation of the instance 'super40' to 'R180'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('super40')
+
+# Change the rotation of the instance to 'R180'
+inst.setOrient('R180')",Change the rotation of the instance 'super40' to 'R180'
+"# Change the rotation of the instance 'super40' to 'R180'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('super40')
+
+# Change the rotation of the instance to 'R180'
+transform = inst.getTransform()
+transform.setOrient('R180')
+inst.setTransform(transform)",Change the rotation of the instance 'super40' to 'R180'
+"# Change the rotation of the instance 'icache_1/_21661_' to 'R270'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Change the rotation of the instance to 'R270'
+inst.setOrient('R270')",Change the rotation of the instance 'icache_1/_21661_' to 'R270'
+"# Change the rotation of the instance 'icache_1/_21661_' to 'R270'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Change the rotation of the instance to 'R270'
+transform = inst.getTransform()
+transform.setOrient('R270')
+inst.setTransform(transform)",Change the rotation of the instance 'icache_1/_21661_' to 'R270'
+"# Change the rotation of the instance 'input31' to 'R270'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Change the rotation of the instance to 'R270'
+inst.setOrient('R270')",Change the rotation of the instance 'input31' to 'R270'
+"# Change the rotation of the instance 'input31' to 'R270'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Change the rotation of the instance to 'R270'
+transform = inst.getTransform()
+transform.setOrient('R270')
+inst.setTransform(transform)",Change the rotation of the instance 'input31' to 'R270'
+"# Change the rotation of the instance 'icache_1/_21661_' to 'MY'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Change the rotation of the instance to 'MY'
+inst.setOrient('MY')",Change the rotation of the instance 'icache_1/_21661_' to 'MY'
+"# Change the rotation of the instance 'icache_1/_21661_' to 'MY'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Change the rotation of the instance to 'MY'
+transform = inst.getTransform()
+transform.setOrient('MY')
+inst.setTransform(transform)",Change the rotation of the instance 'icache_1/_21661_' to 'MY'
+"# Change the rotation of the instance 'input31' to 'MY'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Change the rotation of the instance to 'MY'
+inst.setOrient('MY')",Change the rotation of the instance 'input31' to 'MY'
+"# Change the rotation of the instance 'input31' to 'MY'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Change the rotation of the instance to 'MY'
+transform = inst.getTransform()
+transform.setOrient('MY')
+inst.setTransform(transform)",Change the rotation of the instance 'input31' to 'MY'
+"# Change the rotation of the instance 'icache_1/_21661_' to 'MYR90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Change the rotation of the instance to 'MYR90'
+inst.setOrient('MYR90')",Change the rotation of the instance 'icache_1/_21661_' to 'MYR90'
+"# Change the rotation of the instance 'icache_1/_21661_' to 'MYR90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Change the rotation of the instance to 'MYR90'
+transform = inst.getTransform()
+transform.setOrient('MYR90')
+inst.setTransform(transform)",Change the rotation of the instance 'icache_1/_21661_' to 'MYR90'
+"# Change the rotation of the instance 'input31' to 'MYR90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Change the rotation of the instance to 'MYR90'
+inst.setOrient('MYR90')",Change the rotation of the instance 'input31' to 'MYR90'
+"# Change the rotation of the instance 'input31' to 'MYR90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Change the rotation of the instance to 'MYR90'
+transform = inst.getTransform()
+transform.setOrient('MYR90')
+inst.setTransform(transform)",Change the rotation of the instance 'input31' to 'MYR90'
+"# Change the rotation of the instance 'icache_1/_21661_' to 'MX'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Change the rotation of the instance to 'MX'
+inst.setOrient('MX')",Change the rotation of the instance 'icache_1/_21661_' to 'MX'
+"# Change the rotation of the instance 'icache_1/_21661_' to 'MX'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Change the rotation of the instance to 'MX'
+transform = inst.getTransform()
+transform.setOrient('MX')
+inst.setTransform(transform)",Change the rotation of the instance 'icache_1/_21661_' to 'MX'
+"# Change the rotation of the instance 'input31' to 'MX'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Change the rotation of the instance to 'MX'
+inst.setOrient('MX')",Change the rotation of the instance 'input31' to 'MX'
+"# Change the rotation of the instance 'input31' to 'MX'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Change the rotation of the instance to 'MX'
+transform = inst.getTransform()
+transform.setOrient('MX')
+inst.setTransform(transform)",Change the rotation of the instance 'input31' to 'MX'
+"# Change the rotation of the instance 'icache_1/_21661_' to 'MXR90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Change the rotation of the instance to 'MXR90'
+inst.setOrient('MXR90')",Change the rotation of the instance 'icache_1/_21661_' to 'MXR90'
+"# Change the rotation of the instance 'icache_1/_21661_' to 'MXR90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('icache_1/_21661_')
+
+# Change the rotation of the instance to 'MXR90'
+transform = inst.getTransform()
+transform.setOrient('MXR90')
+inst.setTransform(transform)",Change the rotation of the instance 'icache_1/_21661_' to 'MXR90'
+"# Change the rotation of the instance 'input31' to 'MXR90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Change the rotation of the instance to 'MXR90'
+inst.setOrient('MXR90')",Change the rotation of the instance 'input31' to 'MXR90'
+"# Change the rotation of the instance 'input31' to 'MXR90'
+
+# Get the design block
+block = design.getBlock()
+
+# Find the instance with the specified name
+inst = block.findInst('input31')
+
+# Change the rotation of the instance to 'MXR90'
+transform = inst.getTransform()
+transform.setOrient('MXR90')
+inst.setTransform(transform)",Change the rotation of the instance 'input31' to 'MXR90'
+"# Horizontally flip the rotation of the instances whose library cell types are 'OR2_X3'
+
+#define flipping function
+def flipX(value):
+    if value == ""R0"":
+      return ""MX""
+    elif value == ""R90"":
+      return ""MYR90""
+    elif value == ""R180"":
+      return ""MY""
+    elif value == ""R270"":
+      return ""MXR90""
+    elif value == ""MY"":
+      return ""R180""
+    elif value == ""MYR90"":
+      return ""R90""
+    elif value == ""MX"":
+      return ""R0""
+    elif value == ""MXR90"":
+      return ""R270""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all instances in the block
+insts = block.getInsts()
+
+# Iterate through all instances in the block
+for inst in insts:
+    # Check if the library cell type is 'OR2_X3'
+    if inst.getMaster().getName() == 'OR2_X3':
+        # Horizontally flip the rotation of the instance
+        orient = inst.getOrient()
+        orient = flipX(orient)
+        inst.setOrient(orient)",Horizontally flip the rotation of the instances whose library cell types are 'OR2_X3'
+"# Horizontally flip the rotation of the instances whose library cell types are 'OR2_X3'
+
+#define flipping function
+def flipX(value):
+    if value == ""R0"":
+      return ""MX""
+    elif value == ""R90"":
+      return ""MYR90""
+    elif value == ""R180"":
+      return ""MY""
+    elif value == ""R270"":
+      return ""MXR90""
+    elif value == ""MY"":
+      return ""R180""
+    elif value == ""MYR90"":
+      return ""R90""
+    elif value == ""MX"":
+      return ""R0""
+    elif value == ""MXR90"":
+      return ""R270""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all instances in the block
+insts = block.getInsts()
+
+# Iterate through all instances in the block
+for inst in insts:
+    # Check if the library cell type is 'OR2_X3'
+    if inst.getMaster().getName() == 'OR2_X3':
+        # Horizontally flip the rotation of the instance
+        orient = inst.getTransform().getOrient()
+        orient = flipX(orient)
+        inst.setOrient(orient)",Horizontally flip the rotation of the instances whose library cell types are 'OR2_X3'
+"# Horizontally flip the rotation of the instances whose library cell types are 'OR2_X3'
+
+#define flipping function
+def flipX(value):
+    if value == ""R0"":
+      return ""MX""
+    elif value == ""R90"":
+      return ""MYR90""
+    elif value == ""R180"":
+      return ""MY""
+    elif value == ""R270"":
+      return ""MXR90""
+    elif value == ""MY"":
+      return ""R180""
+    elif value == ""MYR90"":
+      return ""R90""
+    elif value == ""MX"":
+      return ""R0""
+    elif value == ""MXR90"":
+      return ""R270""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all instances in the block
+insts = block.getInsts()
+
+# Iterate through all instances in the block
+for inst in insts:
+    # Check if the library cell type is 'OR2_X3'
+    if inst.getMaster().getName() == 'OR2_X3':
+        # Horizontally flip the rotation of the instance
+        transform = inst.getTransform()
+        orient = transform.getOrient()
+        orient = flipX(orient)
+        transform.setOrient(orient)
+        inst.setTransform(transform)",Horizontally flip the rotation of the instances whose library cell types are 'OR2_X3'
+"# Vertically flip the rotation of the instances whose library cell types are 'OR2_X3'
+
+#define flipping function
+def flipY(value):
+    if value == ""R0"":
+      return ""MY""
+    elif value == ""R90"":
+      return ""MXR90""
+    elif value == ""R180"":
+      return ""MX""
+    elif value == ""R270"":
+      return ""MYR90""
+    elif value == ""MY"":
+      return ""R0""
+    elif value == ""MYR90"":
+      return ""R270""
+    elif value == ""MX"":
+      return ""R180""
+    elif value == ""MXR90"":
+      return ""R90""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all instances in the block
+insts = block.getInsts()
+
+# Iterate through all instances in the block
+for inst in insts:
+    # Check if the library cell type is 'OR2_X3'
+    if inst.getMaster().getName() == 'OR2_X3':
+        # Vertically flip the rotation of the instance
+        transform = inst.getTransform()
+        orient = transform.getOrient()
+        orient = flipY(orient)
+        transform.setOrient(orient)
+        inst.setTransform(transform)
+",Vertically flip the rotation of the instances whose library cell types are 'OR2_X3'
+"# Vertically flip the rotation of the instances whose library cell types are 'OR2_X3'
+
+#define flipping function
+def flipY(value):
+    if value == ""R0"":
+      return ""MY""
+    elif value == ""R90"":
+      return ""MXR90""
+    elif value == ""R180"":
+      return ""MX""
+    elif value == ""R270"":
+      return ""MYR90""
+    elif value == ""MY"":
+      return ""R0""
+    elif value == ""MYR90"":
+      return ""R270""
+    elif value == ""MX"":
+      return ""R180""
+    elif value == ""MXR90"":
+      return ""R90""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all instances in the block
+insts = block.getInsts()
+
+# Iterate through all instances in the block
+for inst in insts:
+    # Check if the library cell type is 'OR2_X3'
+    if inst.getMaster().getName() == 'OR2_X3':
+        # Vertically flip the rotation of the instance
+        transform = inst.getTransform()
+        orient = transform.getOrient()
+        orient = flipY(orient)
+        inst.setOrient(orient)",Vertically flip the rotation of the instances whose library cell types are 'OR2_X3'
+"# Vertically flip the rotation of the instances whose library cell types are 'OR2_X3'
+
+#define flipping function
+def flipY(value):
+    if value == ""R0"":
+      return ""MY""
+    elif value == ""R90"":
+      return ""MXR90""
+    elif value == ""R180"":
+      return ""MX""
+    elif value == ""R270"":
+      return ""MYR90""
+    elif value == ""MY"":
+      return ""R0""
+    elif value == ""MYR90"":
+      return ""R270""
+    elif value == ""MX"":
+      return ""R180""
+    elif value == ""MXR90"":
+      return ""R90""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all instances in the block
+insts = block.getInsts()
+
+# Iterate through all instances in the block
+for inst in insts:
+    # Check if the library cell type is 'OR2_X3'
+    if inst.getMaster().getName() == 'OR2_X3':
+        # Vertically flip the rotation of the instance
+        orient = inst.getOrient()
+        orient = flipY(orient)
+        inst.setOrient(orient)",Vertically flip the rotation of the instances whose library cell types are 'OR2_X3'
+"# Horizontally flip the cells whose library cell types are 'OR2_X3'
+
+#define flipping function
+def flipX(value):
+    if value == ""R0"":
+      return ""MX""
+    elif value == ""R90"":
+      return ""MYR90""
+    elif value == ""R180"":
+      return ""MY""
+    elif value == ""R270"":
+      return ""MXR90""
+    elif value == ""MY"":
+      return ""R180""
+    elif value == ""MYR90"":
+      return ""R90""
+    elif value == ""MX"":
+      return ""R0""
+    elif value == ""MXR90"":
+      return ""R270""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all cells in the block
+insts = block.getInsts()
+
+# Iterate through all cells in the block
+for inst in insts:
+    # Check if the library cell type is 'OR2_X3'
+    if inst.getMaster().getName() == 'OR2_X3':
+        # Horizontally flip the rotation of the cell
+        orient = inst.getOrient()
+        orient = flipX(orient)
+        inst.setOrient(orient)",Horizontally flip the cells whose library cell types are 'OR2_X3'
+"# Horizontally flip the cells whose library cell types are 'OR2_X3'
+
+#define flipping function
+def flipX(value):
+    if value == ""R0"":
+      return ""MX""
+    elif value == ""R90"":
+      return ""MYR90""
+    elif value == ""R180"":
+      return ""MY""
+    elif value == ""R270"":
+      return ""MXR90""
+    elif value == ""MY"":
+      return ""R180""
+    elif value == ""MYR90"":
+      return ""R90""
+    elif value == ""MX"":
+      return ""R0""
+    elif value == ""MXR90"":
+      return ""R270""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all cells in the block
+insts = block.getInsts()
+
+# Iterate through all cells in the block
+for inst in insts:
+    # Check if the library cell type is 'OR2_X3'
+    if inst.getMaster().getName() == 'OR2_X3':
+        # Horizontally flip the rotation of the cell
+        orient = inst.getTransform().getOrient()
+        orient = flipX(orient)
+        inst.setOrient(orient)",Horizontally flip the cells whose library cell types are 'OR2_X3'
+"# Horizontally flip the cells whose library cell types are 'OR2_X3'
+
+#define flipping function
+def flipX(value):
+    if value == ""R0"":
+      return ""MX""
+    elif value == ""R90"":
+      return ""MYR90""
+    elif value == ""R180"":
+      return ""MY""
+    elif value == ""R270"":
+      return ""MXR90""
+    elif value == ""MY"":
+      return ""R180""
+    elif value == ""MYR90"":
+      return ""R90""
+    elif value == ""MX"":
+      return ""R0""
+    elif value == ""MXR90"":
+      return ""R270""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all cells in the block
+insts = block.getInsts()
+
+# Iterate through all cells in the block
+for inst in insts:
+    # Check if the library cell type is 'OR2_X3'
+    if inst.getMaster().getName() == 'OR2_X3':
+        # Horizontally flip the rotation of the cells\
+        transform = inst.getTransform()
+        orient = transform.getOrient()
+        orient = flipX(orient)
+        transform.setOrient(orient)
+        inst.setTransform(transform)",Horizontally flip the cells whose library cell types are 'OR2_X3'
+"# Vertically flip the cells whose library cell types are 'OR2_X3'
+
+#define flipping function
+def flipY(value):
+    if value == ""R0"":
+      return ""MY""
+    elif value == ""R90"":
+      return ""MXR90""
+    elif value == ""R180"":
+      return ""MX""
+    elif value == ""R270"":
+      return ""MYR90""
+    elif value == ""MY"":
+      return ""R0""
+    elif value == ""MYR90"":
+      return ""R270""
+    elif value == ""MX"":
+      return ""R180""
+    elif value == ""MXR90"":
+      return ""R90""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all cells in the block
+insts = block.getInsts()
+
+# Iterate through all cells in the block
+for inst in insts:
+    # Check if the library cell type is 'OR2_X3'
+    if inst.getMaster().getName() == 'OR2_X3':
+        # Vertically flip the rotation of the cell
+        transform = inst.getTransform()
+        orient = transform.getOrient()
+        orient = flipY(orient)
+        transform.setOrient(orient)
+        inst.setTransform(transform)
+",Vertically flip the rotation of the instances whose library cell types are 'OR2_X3'
+"# Vertically flip the cells whose library cell types are 'OR2_X3'
+
+#define flipping function
+def flipY(value):
+    if value == ""R0"":
+      return ""MY""
+    elif value == ""R90"":
+      return ""MXR90""
+    elif value == ""R180"":
+      return ""MX""
+    elif value == ""R270"":
+      return ""MYR90""
+    elif value == ""MY"":
+      return ""R0""
+    elif value == ""MYR90"":
+      return ""R270""
+    elif value == ""MX"":
+      return ""R180""
+    elif value == ""MXR90"":
+      return ""R90""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all cells in the block
+insts = block.getInsts()
+
+# Iterate through all cells in the block
+for inst in insts:
+    # Check if the library cell type is 'OR2_X3'
+    if inst.getMaster().getName() == 'OR2_X3':
+        # Vertically flip the rotation of the cell
+        transform = inst.getTransform()
+        orient = transform.getOrient()
+        orient = flipY(orient)
+        inst.setOrient(orient)",Vertically flip the cells whose library cell types are 'OR2_X3'
+"# Vertically flip the cells whose library cell types are 'OR2_X3'
+
+#define flipping function
+def flipY(value):
+    if value == ""R0"":
+      return ""MY""
+    elif value == ""R90"":
+      return ""MXR90""
+    elif value == ""R180"":
+      return ""MX""
+    elif value == ""R270"":
+      return ""MYR90""
+    elif value == ""MY"":
+      return ""R0""
+    elif value == ""MYR90"":
+      return ""R270""
+    elif value == ""MX"":
+      return ""R180""
+    elif value == ""MXR90"":
+      return ""R90""
+
+# Get the design block
+block = design.getBlock()
+
+# Get all cells in the block
+insts = block.getInsts()
+
+# Iterate through all cells in the block
+for inst in insts:
+    # Check if the library cell type is 'OR2_X3'
+    if inst.getMaster().getName() == 'OR2_X3':
+        # Vertically flip the rotation of the cell
+        orient = inst.getOrient()
+        orient = flipY(orient)
+        inst.setOrient(orient)",Vertically flip the cells whose library cell types are 'OR2_X3'
+"# Invert the rotation and the location of instances with the library cell type 'AND2_X1'.
+
+# Get the design block
+block = design.getBlock()
+
+# Get all instances in the block
+insts = block.getInsts()
+
+# Iterate through all instances in the block
+for inst in insts:
+    # Check if the name of the library cell type is 'AND2_X1'
+    if inst.getMaster().getName() == 'AND2_X1':
+        # Invert the rotation and the location of the instance
+        transform = inst.getTransform()
+        transform.invert()
+        inst.setTransform(transform)",Invert the rotation and the location of instances with the library cell type 'AND2_X1'
+"# Invert the rotation and the location of instances with the library cell type 'OR2_X2'.
+
+# Get the design block
+block = design.getBlock()
+
+# Get all instances in the block
+insts = block.getInsts()
+
+# Iterate through all instances in the block
+for inst in insts:
+    # Check if the name of the library cell type is 'OR2_X2'
+    if inst.getMaster().getName() == 'OR2_X2':
+        # Invert the rotation and the location of the instance
+        transform = inst.getTransform()
+        transform.invert()
+        inst.setTransform(transform)",Invert the rotation and the location of instances with the library cell type 'OR2_X2'
+"# Invert the rotation and the location of cells with the library cell type 'NOR_X3'
+
+# Get the design block
+block = design.getBlock()
+
+# Get all cells in the block
+insts = block.getInsts()
+
+# Iterate through all cells in the block
+for inst in insts:
+    # Check if the name of the library cell type is 'NOR_X3'
+    if inst.getMaster().getName() == 'NOR_X3':
+        # Invert the rotation and the location of the cell
+        transform = inst.getTransform()
+        transform.invert()
+        inst.setTransform(transform)",Invert the rotation and the location of cells with the library cell type 'NOR_X3'
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'input2' as mentioned in the prompt
+inst = block.findInst('input2')
+# Set the orientation of the instance as ""MX""
+inst.setOrient('MX')",Adjust the orientation of the instance 'input2' to 'MX'.
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'input2' as mentioned in the prompt
+inst = block.findInst('input2')
+# Set the rotation of the instance as ""MX""
+inst.setOrient('MX')",Adjust the rotation of the instance 'input2' to 'MX'.
+"# Get the design block
+block = ord.get_db_block()
+# Get the database
+db = ord.get_db()
+# Find the instance named ""split30""
+inst = block.findInst(""split30"")
+# Define the new library cell name
+new_mast_name = 'BUF_X4'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the new libarary cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False",Upsize the instance split30 to BUF_X4
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find the instance named ""split30""
+inst = block.findInst(""split30"")
+# Define the new library cell name
+new_mast_name = 'BUF_X1'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False",Downsize the instance split30 to BUF_X1
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find the instance named ""_32937_""
+inst = block.findInst(""_32937_"")
+# Define the new library cell name
+new_mast_name = 'AND2_X3'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False",Scale up the size of the instance _32937_ to AND2_X3
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find the instance named ""rebuffer_30""
+inst = block.findInst(""rebuffer_30"")
+# Define the new library cell name
+new_mast_name = 'BUF_X4'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False","Use BUF_X4 to replace the instance ""rebuffer_30"""
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find cell ""rebuffer_30""
+inst = block.findInst(""rebuffer_30"")
+# Define the name of the replacing library cell
+new_mast_name = 'BUF_X3'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False","Use BUF_X3 to replace the cell ""rebuffer_30"""
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find cell ""clkbuf_1_1__f_clk""
+inst = block.findInst(""clkbuf_1_1__f_clk"")
+# Define the name of the replacing library cell
+new_mast_name = 'CLKBUF_X2'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False","Use CLKBUF_X2 to replace the cell ""clkbuf_1_1__f_clk"""
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find cell ""clkbuf_1_1__f_clk""
+inst = block.findInst(""clkbuf_1_1__f_clk"")
+# Define the name of the replacing library cell
+new_mast_name = 'clk_bufferx2'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False","Use clk_bufferx2 to replace the cell ""clkbuf_1_1__f_clk"""
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find cell ""clkbuf_1_1__f_clk""
+inst = block.findInst(""clkbuf_1_1__f_clk"")
+# Define the name of the replacing library cell
+new_mast_name = 'clkbufferx2'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False","Use clkbufferx2 to replace the cell ""clkbuf_1_1__f_clk"""
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find cell ""clkbuf_1_1__f_clk""
+inst = block.findInst(""clkbuf_1_1__f_clk"")
+# Define the name of the replacing library cell
+new_mast_name = 'CLK_BUF_X4'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False","Use CLK_BUF_X4 to replace the cell ""clkbuf_1_1__f_clk"""
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find the instance named ""split30""
+inst = block.findInst(""split30"")
+# Define the new library cell name
+new_mast_name = 'BUF_X1'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False",Downsize the cell split30 using BUF_X1
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find the instance named ""split33""
+inst = block.findInst(""split33"")
+# Define the new library cell name
+new_mast_name = 'BUF_X2'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False",Downsize the cell split33 using BUF_X2
+"# Get the design block
+block = ord.get_db_block()
+# Get the database
+db = ord.get_db()
+# Find the instance named ""input104""
+inst = block.findInst(""input104"")
+# Define the new library cell name
+new_mast_name = 'BUF_X3'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the new libarary cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False",Upsize the instance input104 to BUF_X3
+"# Get the design block
+block = ord.get_db_block()
+# Get the database
+db = ord.get_db()
+# Find the instance named ""output_104""
+inst = block.findInst(""output_104"")
+# Define the new library cell name
+new_mast_name = 'OR2_X3'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the new libarary cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False",Upsize the instance output_104 to OR2_X3
+"# Get the design block
+block = ord.get_db_block()
+# Get the database
+db = ord.get_db()
+# Find the instance named ""output_104""
+inst = block.findInst(""output_104"")
+# Define the new library cell name
+new_mast_name = 'NOR2_X3'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the new libarary cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False",Upsize the instance output_104 to NOR2_X3
+"# Get the design block
+block = ord.get_db_block()
+# Get the database
+db = ord.get_db()
+# Find the instance named ""output_104""
+inst = block.findInst(""output_104"")
+# Define the new library cell name
+new_mast_name = 'NOR_2X3'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the new libarary cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False",Upsize the instance output_104 to NOR_2X3
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find cell ""msg_and_gate_118""
+inst = block.findInst(""msg_and_gate_118"")
+# Define the name of the replacing library cell
+new_mast_name = 'and_gate2_x9'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False","Replace the instance called ""msg_and_gate_118"" with the llibrary cell ""and_gate2_x9"""
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find cell ""input_118""
+inst = block.findInst(""input_118"")
+# Define the name of the replacing library cell
+new_mast_name = 'NANDx3'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False","Replace the instance called ""input_118"" with the llibrary cell ""NANDx3"""
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find cell ""input_118""
+inst = block.findInst(""input_118"")
+# Define the name of the replacing library cell
+new_mast_name = 'NANDx3'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)","Replace the instance called ""input_118"" with the llibrary cell ""NANDx3"""
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find cell ""msg_and_gate_118""
+inst = block.findInst(""msg_and_gate_118"")
+# Define the name of the replacing library cell
+new_mast_name = 'and_gate2_x9'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)","Replace the instance called ""msg_and_gate_118"" with the llibrary cell ""and_gate2_x9"""
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find cell ""msg_and_gate_118""
+inst = block.findInst(""msg_and_gate_118"")
+# Define the name of the replacing library cell
+new_mast_name = 'and_gate2_x9'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+else:
+    print(""The library cell does not exist"")","Replace the instance called ""msg_and_gate_118"" with the llibrary cell ""and_gate2_x9"""
+"# Get the design block
+block = ord.get_db_block()
+# Get the database
+db = ord.get_db()
+# Find the instance named ""input104""
+inst = block.findInst(""input104"")
+# Define the new library cell name
+new_mast_name = 'BUF_X3'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the new libarary cell
+    inst.swapMaster(new_mast)
+else:
+    print(""The library cell does not exist"")",Upsize the instance input104 to BUF_X3.
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find the instance named ""_32937_""
+inst = block.findInst(""_32937_"")
+# Define the new library cell name
+new_mast_name = 'AND2_X3'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+else:
+    print(""The library cell does not exist"")",Scale up the size of the instance _32937_ to AND2_X3.
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find the instance named ""_32937_""
+inst = block.findInst(""_32937_"")
+# Define the new library cell name
+new_mast_name = 'AND2_X3'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+else:
+    print(""The library cell does not exist"")","How can I scale up the size of the instance ""_32937_"" using AND2_X3?"
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find cell ""msg_and_gate_118""
+inst = block.findInst(""msg_and_gate_118"")
+# Define the name of the replacing library cell
+new_mast_name = 'and_gate2_x9'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+else:
+    print(""The library cell does not exist"")","How can I replace the instance ""msg_and_gate_118"" with the llibrary cell ""and_gate2_x9""?"
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find cell ""msg_and_gate_118""
+inst = block.findInst(""msg_and_gate_118"")
+# Define the name of the replacing library cell
+new_mast_name = 'and_gate2_x9'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+else:
+    print(""The library cell does not exist"")","Can you give me the script to replace the instance ""msg_and_gate_118"" with the llibrary cell ""and_gate2_x9""?"
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find cell ""msg_and_gate_118""
+inst = block.findInst(""msg_and_gate_118"")
+# Define the name of the replacing library cell
+new_mast_name = 'AND2_X6'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+else:
+    print(""The library cell does not exist"")","Can you give me the script to replace the instance ""msg_and_gate_118"" with the master ""AND2_X6""?"
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find cell ""clkbuf_1_1__f_clk""
+inst = block.findInst(""clkbuf_1_1__f_clk"")
+# Define the name of the replacing library cell
+new_mast_name = 'clkbufferx2'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False","How can I use clkbufferx2 to replace the cell ""clkbuf_1_1__f_clk""?"
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find cell ""clkbuf_1_1__f_clk""
+inst = block.findInst(""clkbuf_1_1__f_clk"")
+# Define the name of the replacing library cell
+new_mast_name = 'clkbufferx2'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False","Show me how I can use clkbufferx2 to replace the cell ""clkbuf_1_1__f_clk""."
+"# Get the design block
+block = ord.get_db_block()
+# Get the openroad database
+db = ord.get_db()
+# Find cell ""_input_221_""
+inst = block.findInst(""_input_221_"")
+# Define the name of the replacing library cell
+new_mast_name = 'XOR3x5 '
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the required library cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False","How can I use XOR3x5 to replace the cell ""_input_221_""?"
+"# Get the design block
+block = ord.get_db_block()
+# Get the database
+db = ord.get_db()
+# Find the instance named ""output_104""
+inst = block.findInst(""output_104"")
+# Define the new library cell name
+new_mast_name = 'NOR_2X3'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the new libarary cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False",Show me how I can upsize the instance output_104 to NOR_2X3.
+"# Get the design block
+block = ord.get_db_block()
+# Get the database
+db = ord.get_db()
+# Find the instance named ""output_118 ""
+inst = block.findInst(""output_118 "")
+# Define the new library cell name
+new_mast_name = 'NOR_2X6'
+# Check if the required library cell exists in the database
+if db.findMaster(new_mast_name) is not None:
+    # Find the required library cell
+    new_mast = db.findMaster(new_mast_name)
+    # Swap the instance's library cell with the new libarary cell
+    inst.swapMaster(new_mast)
+    return True
+else:
+    return False",Show me how I can upsize the instance output_118 using NOR_2X6.
+"# Get the design block
+block = ord.get_db_block()
+# Get the database
+db = ord.get_db()
+# Get all nets
+nets = block.getNets()
+# Find the POWER and GROUND nets
+for net in nets:
+    if net.getSigType() == 'POWER':
+        power_net = net
+    elif net.getSigType() == 'GROUND':
+        ground_net = net
+# Find the source instance named ""_350_""
+source_inst = block.findInst(""_350_"")
+# Find the pin connected to net ""_036_""
+for pin in source_inst.getITerms():
+    if pin.getNet() is not None:
+        if pin.getNet().getName() == '_036_':
+            source_pin = pin
+            source_net = pin.getNet()
+            break
+# Create a new net
+new_net = odb.dbNet_create(block,'new_net_1')
+# Find the master instance named 'BUF_X2'
+mast = db.findMaster('BUF_X2')
+# Create a new instance named 'new_inst_1' using the 'BUF_X2' master
+new_inst = odb.dbInst_create(block,mast,'new_inst_1')
+# Disconnect the source pin
+source_pin.disconnect()
+# Connect the source pin to the new net
+source_pin.connect(new_net)
+# Connect the pins of the new instance
+for pin in new_inst.getITerms():
+    if pin.isInputSignal():
+        pin.connect(new_net)
+    elif pin.isOutputSignal():
+        pin.connect(source_net)
+    elif pin.getSigType() == 'POWER':
+        pin.connect(power_net)
+    elif pin.getSigType() == 'GROUND':
+        pin.connect(ground_net)
+","Add a new instance 'new_inst_1' using buffer cell BUF_X2 after the instance '_350_' on the net '_036', and connect the instances using a new net 'new_net_1'"
+"# Get the design block
+block = ord.get_db_block()
+# Get the database
+db = ord.get_db()
+# Get all nets
+nets = block.getNets()
+# Find the POWER and GROUND nets
+for net in nets:
+    if net.getSigType() == 'POWER':
+        power_net = net
+    elif net.getSigType() == 'GROUND':
+        ground_net = net
+# Find the source instance named ""_350_""
+source_inst = block.findInst(""_350_"")
+# Find the pin connected to net ""_036_""
+for pin in source_inst.getITerms():
+    if pin.getNet() is not None:
+        if pin.getNet().getName() == '_036_':
+            source_pin = pin
+            source_net = pin.getNet()
+            break
+# Create a new net
+new_net = odb.dbNet_create(block,'new_net_1')
+# Find the master instance named 'bufferx3'
+mast = db.findMaster('bufferx3')
+# Create a new instance named 'new_inst_1' using the 'bufferx3' master
+new_inst = odb.dbInst_create(block,mast,'new_inst_1')
+# Disconnect the source pin
+source_pin.disconnect()
+# Connect the source pin to the new net
+source_pin.connect(new_net)
+# Connect the pins of the new instance
+for pin in new_inst.getITerms():
+    if pin.isInputSignal():
+        pin.connect(new_net)
+    elif pin.isOutputSignal():
+        pin.connect(source_net)
+    elif pin.getSigType() == 'POWER':
+        pin.connect(power_net)
+    elif pin.getSigType() == 'GROUND':
+        pin.connect(ground_net)
+","Add a new instance 'new_inst_1' using buffer cell bufferx3 after the instance '_350_' on the net '_036', and connect the instances using a new net 'new_net_1'"
+"# Get the design block
+block = ord.get_db_block()
+# Get the database
+db = ord.get_db()
+# Get all nets
+nets = block.getNets()
+# Find the POWER and GROUND nets
+for net in nets:
+    if net.getSigType() == 'POWER':
+        power_net = net
+    elif net.getSigType() == 'GROUND':
+        ground_net = net
+# Find the source instance named ""_350_""
+source_inst = block.findInst(""_350_"")
+# Find the pin connected to net ""_036_""
+for pin in source_inst.getITerms():
+    if pin.getNet() is not None:
+        if pin.getNet().getName() == '_036_':
+            source_pin = pin
+            source_net = pin.getNet()
+            break
+# Create a new net
+new_net = odb.dbNet_create(block,'new_net_1')
+# Find the master instance named 'bufferx3'
+mast = db.findMaster('bufferx3')
+# Create a new instance named 'new_inst_1' using the 'bufferx3' master
+new_inst = odb.dbInst_create(block,mast,'new_inst_1')
+# Disconnect the source pin
+source_pin.disconnect()
+# Connect the source pin to the new net
+source_pin.connect(new_net)
+# Connect the pins of the new instance
+for pin in new_inst.getITerms():
+    if pin.isInputSignal():
+        pin.connect(new_net)
+    elif pin.isOutputSignal():
+        pin.connect(source_net)
+    elif pin.getSigType() == 'POWER':
+        pin.connect(power_net)
+    elif pin.getSigType() == 'GROUND':
+        pin.connect(ground_net)
+","Add a new instance 'new_inst_1' using library cell bufferx3 after the instance '_350_' on the net '_036', and connect the instances using a new net 'new_net_1'"
+"# Get the design block
+block = ord.get_db_block()
+# Get the database
+db = ord.get_db()
+# Get all nets
+nets = block.getNets()
+# Find the POWER and GROUND nets
+for net in nets:
+    if net.getSigType() == 'POWER':
+        power_net = net
+    elif net.getSigType() == 'GROUND':
+        ground_net = net
+# Find the source instance named ""_350_""
+source_inst = block.findInst(""_350_"")
+# Find the pin connected to net ""_036_""
+for pin in source_inst.getITerms():
+    if pin.getNet() is not None:
+        if pin.getNet().getName() == '_036_':
+            source_pin = pin
+            source_net = pin.getNet()
+            break
+# Create a new net
+new_net = odb.dbNet_create(block,'new_net_1')
+# Find the master instance named 'bufferx3'
+mast = db.findMaster('bufferx3')
+# Create a new instance named 'new_inst_1' using the 'bufferx3' master
+new_inst = odb.dbInst_create(block,mast,'new_inst_1')
+# Disconnect the source pin
+source_pin.disconnect()
+# Connect the source pin to the new net
+source_pin.connect(new_net)
+# Connect the pins of the new instance
+for pin in new_inst.getITerms():
+    if pin.isInputSignal():
+        pin.connect(new_net)
+    elif pin.isOutputSignal():
+        pin.connect(source_net)
+    elif pin.getSigType() == 'POWER':
+        pin.connect(power_net)
+    elif pin.getSigType() == 'GROUND':
+        pin.connect(ground_net)
+","How can I add a new instance 'new_inst_1' using library cell bufferx3 after the instance '_350_' on the net '_036', and connect the instances using a new net 'new_net_1'?"
+"# Get the design block
+block = ord.get_db_block()
+# Get the database
+db = ord.get_db()
+# Get all nets
+nets = block.getNets()
+# Find the POWER and GROUND nets
+for net in nets:
+    if net.getSigType() == 'POWER':
+        power_net = net
+    elif net.getSigType() == 'GROUND':
+        ground_net = net
+# Find the source instance named ""_350_""
+source_inst = block.findInst(""_350_"")
+# Find the pin connected to net ""_036_""
+for pin in source_inst.getITerms():
+    if pin.getNet() is not None:
+        if pin.getNet().getName() == '_036_':
+            source_pin = pin
+            source_net = pin.getNet()
+            break
+# Create a new net
+new_net = odb.dbNet_create(block,'new_net_1')
+# Find the master instance named 'bufferx3'
+mast = db.findMaster('bufferx3')
+# Create a new instance named 'new_inst_1' using the 'bufferx3' master
+new_inst = odb.dbInst_create(block,mast,'new_inst_1')
+# Disconnect the source pin
+source_pin.disconnect()
+# Connect the source pin to the new net
+source_pin.connect(new_net)
+# Connect the pins of the new instance
+for pin in new_inst.getITerms():
+    if pin.isInputSignal():
+        pin.connect(new_net)
+    elif pin.isOutputSignal():
+        pin.connect(source_net)
+    elif pin.getSigType() == 'POWER':
+        pin.connect(power_net)
+    elif pin.getSigType() == 'GROUND':
+        pin.connect(ground_net)
+","Add a new instance 'new_inst_1' using library cell bufferx3 after the instance '_350_' on the net '_036', and connect the instances using a new net 'new_net_1'  "
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the port with name ""req_val""
+port = block.findBTerm('req_val')
+# Find the net with name ""req_msg[17]""
+net = block.findNet('req_msg[17]')
+# Connect the port and the net
+port.connect(net)",Connect the port named 'req_val' and net named 'req_msg[17]'
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the port with name ""req_val""
+port = block.findBTerm('req_val')
+# Disconnect the port
+port.disconnect()",Disconnect the port named 'req_val' from the nets it is connected to
+"from openroad import Design, Tech
+
+tech = Tech()
+# Make sure to read all required files
+design = Design(tech)
+# Get PDNGen module
+pdngen_obj = design.getPdnGen()
+# Find the VDD net
+VDD_net = design.getBlock().findNet(""VDD"")
+# Rip up the VDD grids
+pdn_obj.ripUp(VDD_net)",Rip up the VDD grids
+"from openroad import Design, Tech
+
+tech = Tech()
+# Make sure to read all required files
+design = Design(tech)
+# Get PDNGen module
+pdngen_obj = design.getPdnGen()
+# Find the VDD net
+VSS_net = design.getBlock().findNet(""VSS"")
+# Rip up the VSS grids
+pdn_obj.ripUp(VSS_net)",Rip up the VSS grids
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'input2' as mentioned in the prompt
+inst = block.findInst('input2')
+#Set the location to coordinates (22500, 33459)
+inst.setLocation(22500,33459)","Set the location of the instance named 'input2' to coordinates (22500, 33459)."
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the port with name ""resp_msg[15]""
+port = block.findBTerm('resp_msg[15]')
+# Find the net with name ""req_msg[10]""
+net = block.findNet('req_msg[10]')
+# Connect the port and the net
+port.connect(net)",Establish a connection between the port 'resp_msg[15]' and the net named 'req_msg[10]'.
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the port with name ""resp1_3_msg[15]""
+port = block.findBTerm('resp1_3_msg[15]')
+# Find the net with name ""req_msg[10]""
+net = block.findNet('req_msg[10]')
+# Connect the port and the net
+port.connect(net)",Establish a connection between the port 'resp1_3_msg[15]' and the net named 'req_msg[10]'.
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the port with name ""resp1_3_msg[12]""
+port = block.findBTerm('resp1_3_msg[12]')
+# Find the net with name ""req_msg[12]""
+net = block.findNet('req_msg[12]')
+# Connect the port and the net
+port.connect(net)",Establish a connection between the port 'resp1_3_msg[12]' and the net named 'req_msg[12]'.
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the port with name ""resp_msg[15]""
+port = block.findBTerm('resp_msg[15]')
+# Disconnect the port
+port.disconnect()",Remove the connection of the port 'resp_msg[15]' from its associated nets.
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the port with name ""sram_132[15]""
+port = block.findBTerm('sram_132[15]')
+# Disconnect the port
+port.disconnect()",Remove the connection of the port 'sram_132[15]' from its associated nets.
+"from openroad import Design, Tech
+
+tech = Tech()
+# Make sure to read all required files
+design = Design(tech)
+# Get PDNGen module
+pdngen_obj = design.getPdnGen()
+# Find the VDD net
+VDD_net = design.getBlock().findNet(""VDD"")
+# Rip up the VDD grids
+pdn_obj.ripUp(VDD_net)",How can I rip up the existing VDD power grid so I can reconstruct PDN?
+"from openroad import Design, Tech
+
+tech = Tech()
+# Make sure to read all required files
+design = Design(tech)
+# Get PDNGen module
+pdngen_obj = design.getPdnGen()
+# Find the VDD net
+VDD_net = design.getBlock().findNet(""VDD"")
+# Rip up the VDD grids
+pdn_obj.ripUp(VDD_net)",How can I remove the existing VDD power grid?
+"from openroad import Design, Tech
+
+tech = Tech()
+# Make sure to read all required files
+design = Design(tech)
+# Get PDNGen module
+pdngen_obj = design.getPdnGen()
+# Find the VSS net
+VDD_net = design.getBlock().findNet(""VSS"")
+# Rip up the VSS grids
+pdn_obj.ripUp(VSS_net)",How can I rip up the existing VSS power grid so I can reconstruct PDN?
+"from openroad import Design, Tech
+
+tech = Tech()
+# Make sure to read all required files
+design = Design(tech)
+# Get PDNGen module
+pdngen_obj = design.getPdnGen()
+# Find the VSS net
+VDD_net = design.getBlock().findNet(""VSS"")
+# Rip up the VSS grids
+pdn_obj.ripUp(VSS_net)",How can I remove the existing VSS power grid?
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'input3' as mentioned in the prompt
+inst = block.findInst('input3')
+#Set the placing location of the instance to (18000,26999)
+inst.setLocation(18000,26999)","Set the location of the instance 'input3' to (18000,26999) in OpenDB unit"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name ""input1"" as mentioned in the prompt
+inst = block.findInst('input1')
+#Set the location of the instance with X Coordinate 22500 and Y Coordinate as 33459
+inst.setLocation(22500,33459)","Set the location of the instance 'input1' to (22500,33459) in OpenDB unit"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'input3' as mentioned in the prompt
+inst = block.findInst('input3')
+#Set the placing location of the instance to (2.5,1.8) in micron
+inst.setLocation(int(2.5*block.getDbUnitsPerMicron()),int(1.8*block.getDbUnitsPerMicron()))","Set the location of the instance 'input3' to (2.5, 1.8) in micron"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'split30' as mentioned in the prompt
+inst = block.findInst('split30')
+#Set the placing location of the instance to (10.81, 3.6) in micron
+inst.setLocation(int(10.81*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","Set the location of the instance 'split30' to (10.81, 3.6) in micron"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'split30' as mentioned in the prompt
+inst = block.findInst('split30')
+#Set the placing location of the instance to (10.81, 3.6) in micron
+inst.setLocation(int(10.81*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","Move the instance 'split30' to (10.81, 3.6) in micron"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name '_11991_' as mentioned in the prompt
+inst = block.findInst('_11991_')
+#Set the placing location of the instance to (10.81, 3.6) in micron
+inst.setLocation(int(10.81*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","How can I move the instance '_11991_' to (10.81, 3.6) in micron?"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name '_11991_' as mentioned in the prompt
+inst = block.findInst('_11991_')
+#Set the placing location of the instance to (20, 3.6) in micron
+inst.setLocation(int(20*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","How can I move the instance '_11991_' to (20, 3.6) in micron?"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name ""input1"" as mentioned in the prompt
+inst = block.findInst('input1')
+#Set the location of the instance with X Coordinate 22500 and Y Coordinate as 33459
+inst.setLocation(22500,33459)","How can I set the location of the instance 'input1' to (22500,33459) in OpenDB unit?"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name ""input1"" as mentioned in the prompt
+inst = block.findInst('input1')
+#Set the location of the instance with X Coordinate 22500 and Y Coordinate as 33459
+inst.setLocation(22500,33459)","Show me how I can set the location of the instance 'input1' to (22500,33459) in OpenDB unit"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name '_11991_' as mentioned in the prompt
+inst = block.findInst('_11991_')
+#Set the placing location of the instance to (10.81, 9.18) in micron
+inst.setLocation(int(10.81*block.getDbUnitsPerMicron()),int(9.18*block.getDbUnitsPerMicron()))","Show me how I can move the instance '_11991_' to (10.81, 9.18) in micron"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name '_temp_inst_' as mentioned in the prompt
+inst = block.findInst('_temp_inst_')
+#Set the placing location of the instance to (3.18, 9.18) in micron
+inst.setLocation(int(3.18*block.getDbUnitsPerMicron()),int(9.18*block.getDbUnitsPerMicron()))","Show me how I can move the instance '_temp_inst_' to (3.18, 9.18) in micron"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'and_no_123' as mentioned in the prompt
+inst = block.findInst('and_no_123')
+#Set the placing location of the instance to (4.14, 41.4) in micron
+inst.setLocation(int(4.14*block.getDbUnitsPerMicron()),int(41.4*block.getDbUnitsPerMicron()))","Show me how I can move the instance 'and_no_123' to (4.14, 41.4) in micron"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'and_no_123' as mentioned in the prompt
+inst = block.findInst('and_no_123')
+#Set the placing location of the instance to (4.14, 41.4) in um
+inst.setLocation(int(4.14*block.getDbUnitsPerMicron()),int(41.4*block.getDbUnitsPerMicron()))","Show me how I can move the instance 'and_no_123' to (4.14, 41.4) in um"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'split30' as mentioned in the prompt
+inst = block.findInst('split30')
+#Set the placing location of the instance to (10.81, 3.6) in um
+inst.setLocation(int(10.81*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","Set the location of the instance 'split30' to (10.81, 3.6) in um"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'split30' as mentioned in the prompt
+inst = block.findInst('split30')
+#Set the placing location of the instance to (10.81, 3.6) in um
+inst.setLocation(int(10.81*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","Move the instance 'split30' to (10.81, 3.6) in um"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name '_11991_' as mentioned in the prompt
+inst = block.findInst('_11991_')
+#Set the placing location of the instance to (10.81, 3.6) in um
+inst.setLocation(int(10.81*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","How can I move the instance '_11991_' to (10.81, 3.6) in um?"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name '_11991_' as mentioned in the prompt
+inst = block.findInst('_11991_')
+#Set the placing location of the instance to (20, 3.6) in um
+inst.setLocation(int(20*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","How can I move the instance '_11991_' to (20, 3.6) in um?"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'split30' as mentioned in the prompt
+inst = block.findInst('split30')
+#Set the placing location of the instance to (10.81, 3.6) in micrometer
+inst.setLocation(int(10.81*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","Set the location of the instance 'split30' to (10.81, 3.6) in micrometer"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'split30' as mentioned in the prompt
+inst = block.findInst('split30')
+#Set the placing location of the instance to (10.81, 3.6) in micrometer
+inst.setLocation(int(10.81*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","Move the instance 'split30' to (10.81, 3.6) in micrometer"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name '_11991_' as mentioned in the prompt
+inst = block.findInst('_11991_')
+#Set the placing location of the instance to (10.81, 3.6) in micrometer
+inst.setLocation(int(10.81*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","How can I move the instance '_11991_' to (10.81, 3.6) in micrometer?"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name '_11991_' as mentioned in the prompt
+inst = block.findInst('_11991_')
+#Set the placing location of the instance to (20, 3.6) in micrometer
+inst.setLocation(int(20*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","How can I move the instance '_11991_' to (20, 3.6) in micrometer?"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'input3' as mentioned in the prompt
+inst = block.findInst('input3')
+#Set the placing location of the instance to (18000,26999)
+inst.setOrigin(18000,26999)","Set the location of the instance 'input3' to (18000,26999) in OpenDB unit"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name ""input1"" as mentioned in the prompt
+inst = block.findInst('input1')
+#Set the location of the instance with X Coordinate 22500 and Y Coordinate as 33459
+inst.setOrigin(22500,33459)","Set the location of the instance 'input1' to (22500,33459) in OpenDB unit"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'input3' as mentioned in the prompt
+inst = block.findInst('input3')
+#Set the placing location of the instance to (2.5,1.8) in micron
+inst.setOrigin(int(2.5*block.getDbUnitsPerMicron()),int(1.8*block.getDbUnitsPerMicron()))","Set the location of the instance 'input3' to (2.5, 1.8) in micron"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'split30' as mentioned in the prompt
+inst = block.findInst('split30')
+#Set the placing location of the instance to (10.81, 3.6) in micron
+inst.setOrigin(int(10.81*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","Set the location of the instance 'split30' to (10.81, 3.6) in micron"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name ""input1"" as mentioned in the prompt
+inst = block.findInst('input1')
+#Set the location of the instance with X Coordinate 22500 and Y Coordinate as 33459
+inst.setOrigin(22500,33459)","Show me how I can set the location of the instance 'input1' to (22500,33459) in OpenDB unit"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name '_11991_' as mentioned in the prompt
+inst = block.findInst('_11991_')
+#Set the placing location of the instance to (10.81, 9.18) in micron
+inst.setOrigin(int(10.81*block.getDbUnitsPerMicron()),int(9.18*block.getDbUnitsPerMicron()))","Show me how I can move the instance '_11991_' to (10.81, 9.18) in micron"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name '_temp_inst_' as mentioned in the prompt
+inst = block.findInst('_temp_inst_')
+#Set the placing location of the instance to (3.18, 9.18) in micron
+inst.setOrigin(int(3.18*block.getDbUnitsPerMicron()),int(9.18*block.getDbUnitsPerMicron()))","Show me how I can move the instance '_temp_inst_' to (3.18, 9.18) in micron"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'and_no_123' as mentioned in the prompt
+inst = block.findInst('and_no_123')
+#Set the placing location of the instance to (4.14, 41.4) in micron
+inst.setOrigin(int(4.14*block.getDbUnitsPerMicron()),int(41.4*block.getDbUnitsPerMicron()))","Show me how I can move the instance 'and_no_123' to (4.14, 41.4) in micron"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'and_no_123' as mentioned in the prompt
+inst = block.findInst('and_no_123')
+#Set the placing location of the instance to (4.14, 41.4) in um
+inst.setOrigin(int(4.14*block.getDbUnitsPerMicron()),int(41.4*block.getDbUnitsPerMicron()))","Show me how I can move the instance 'and_no_123' to (4.14, 41.4) in um"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'split30' as mentioned in the prompt
+inst = block.findInst('split30')
+#Set the placing location of the instance to (10.81, 3.6) in um
+inst.setOrigin(int(10.81*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","Set the location of the instance 'split30' to (10.81, 3.6) in um"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'split30' as mentioned in the prompt
+inst = block.findInst('split30')
+#Set the placing location of the instance to (10.81, 3.6) in micrometer
+inst.setOrigin(int(10.81*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","Set the location of the instance 'split30' to (10.81, 3.6) in micrometer"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name 'split30' as mentioned in the prompt
+inst = block.findInst('split30')
+#Set the placing location of the instance to (10.81, 3.6) in micrometer
+inst.setOrigin(int(10.81*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","Move the instance 'split30' to (10.81, 3.6) in micrometer"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name '_11991_' as mentioned in the prompt
+inst = block.findInst('_11991_')
+#Set the placing location of the instance to (10.81, 3.6) in micrometer
+inst.setOrigin(int(10.81*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","How can I move the instance '_11991_' to (10.81, 3.6) in micrometer?"
+"# Get the current design block from the OpenROAD database
+block = ord.get_db_block()
+# Find the instance with name '_11991_' as mentioned in the prompt
+inst = block.findInst('_11991_')
+#Set the placing location of the instance to (20, 3.6) in micrometer
+inst.setOrigin(int(20*block.getDbUnitsPerMicron()),int(3.6*block.getDbUnitsPerMicron()))","How can I move the instance '_11991_' to (20, 3.6) in micrometer?"
