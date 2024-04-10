@@ -1,0 +1,224 @@
+﻿Prompts,Answers
+Brief me on OpenROAD Flow?,"OpenROAD-flow-scripts (ORFS) is a fully autonomous, RTL-GDSII flow for rapid architecture and design space exploration, early prediction of QoR, and detailed physical design implementation. However, ORFS also enables manual intervention for finer user control of individual flow stages through Tcl commands and Python APIs."
+What is OpenROAD Flow and its benefits?,"OpenROAD-flow-scripts (ORFS) is a fully autonomous, RTL-GDSII flow for rapid architecture and design space exploration, early prediction of QoR, and detailed physical design implementation. However, ORFS also enables manual intervention for finer user control of individual flow stages through Tcl commands and Python APIs."
+Brief me on OpenROAD Flow?,"OpenROAD-flow-scripts offer a comprehensive, autonomous RTL-GDSII flow for rapid design exploration and physical design, allowing for manual intervention at stages through Tcl commands and Python APIs for greater control."
+"I'm trying to port ORFS to a TSMC process. During the detailed route step, I get a lot of DRT-0073 errors. Utilization is set to 20% at the beginning of the P&R flow and it is a pretty simple design. Give me some tips about what to look into?
+I have tried to run the pin_access command directly but the -verbose parameter does not seem to work as I don't get any more information","You can try the developer debugs to get a sense of what is going on. Put detailed_route_debug -pa -pa_markers -pin _3504_:A1 before you call detailed_route and run it in the GUI. It will stop at the pin and show you how it is trying to access it and any associated drc markers. You click the continue button to see the various steps. Hopefully, that gives you an idea as to what is going on. The other option is a support contract with precisioninno.com where we can help under NDA.
+"
+I'm encountering DRT-0073 errors during detailed routing in ORFS; any advice?,"You can try the developer debugs to get a sense of what is going on. Put detailed_route_debug -pa -pa_markers -pin _3504_:A1 before you call detailed_route and run it in the GUI. It will stop at the pin and show you how it is trying to access it and any associated drc markers. You click the continue button to see the various steps. Hopefully, that gives you an idea as to what is going on. The other option is a support contract with precisioninno.com where we can help under NDA.
+"
+"I'm trying to port ORFS to a TSMC process. During the detailed route step, I get a lot of DRT-0073 errors. Utilization is set to 20% at the beginning of the P&R flow and it is a pretty simple design. Give me some tips about what to look into?
+I have tried to run the pin_access command directly but the -verbose parameter does not seem to work as I don't get any more information","Developer debug options in OpenROAD can give insights into detailed routing processes, offering visual debug aids in the GUI and the option for NDA-supported assistance from precisioninno.com."
+What does the following argument do in the build command of ORFS: -o or —local?,"The argument, o or —local, builds locally instead of building a Docker image."
+How does the -o or —local argument function in the build command of ORFS?,"The argument, o or —local, builds locally instead of building a Docker image."
+What does the following argument do in the build command of ORFS: -o or —local?,The -o or --local argument opts for a local build over Docker.
+What operation does the -l or --latest argument perform in the build command of ORFS?,The -l or --latest argument specifies to use of the head of branch –or_branch or ‘master’ by default for tools/OpenROAD.
+What is accomplished by the -l or --latest argument in the build command of ORFS?,The -l or --latest argument specifies to use of the head of branch –or_branch or ‘master’ by default for tools/OpenROAD.
+What operation does the -l or --latest argument perform in the build command of ORFS?,"The -l or --latest argument chooses the latest branch head for tools/OpenROAD, defaulting to master."
+How is this argument utilized in the build command of ORFS: --or_branch BRANCH_NAME?,The -or_branch BRANCH_NAME argument stipulates the use of the head of branch BRANCH for tools/OpenROAD.
+How is the --or_branch BRANCH_NAME argument used in the build command of ORFS?,The -or_branch BRANCH_NAME argument stipulates the use of the head of branch BRANCH for tools/OpenROAD.
+How is this argument utilized in the build command of ORFS: --or_branch BRANCH_NAME?,The -or_branch BRANCH_NAME argument selects the branch head of BRANCH for tools/OpenROAD.
+What role does this argument play in the build command of ORFS: --or_repo REPO_URL?, This argument enumerates to use of a fork at REPO-URL (https/ssh) for tools/OpenROAD.
+What does the --or_repo REPO_URL argument specify in the build command of ORFS?, This argument enumerates to use of a fork at REPO-URL (https/ssh) for tools/OpenROAD.
+What role does this argument play in the build command of ORFS: --or_repo REPO_URL?,Specifies using a tools/OpenROAD fork at a given REPO-URL.
+What does the following argument do in the build command of ORFS: --no_init?,The --no_init argument prescribes skipping initializing submodules.
+What does the --no_init argument accomplish in the build command of ORFS?,The --no_init argument prescribes skipping initializing submodules.
+What does the following argument do in the build command of ORFS: --no_init?,The --no_init option omits submodule initialization.
+How does the following argument function in the build command of ORFS: -t N or --threads N?,The -t N or --threads N argument stipulates the use of N cpus when compiling software.
+What does the -t N or --threads N argument control in the build command of ORFS?,The -t N or --threads N argument stipulates the use of N cpus when compiling software.
+How does the following argument function in the build command of ORFS: -t N or --threads N?,The -t N or --threads N argument utilizes N CPUs for software compilation.
+What is the purpose of the following argument in the build command of ORFS: -n or --nice?,"The -n or --nice flag in the build script instructs the build script to set all jobs to the maximim Unix ""niceness"". Niceness determines how much the operating system prefers to schedule process. The purpose of setting this flag is to ensure that a system is not overwhelmed by using all available processing primarily of the build jobs. The build will use all CPUs by default unless --threads is also given, then N threads are used instead."
+What is the purpose of the -n or --nice argument in the build command of ORFS?,"The -n or --nice flag in the build script instructs the build script to set all jobs to the maximim Unix ""niceness"". Niceness determines how much the operating system prefers to schedule process. The purpose of setting this flag is to ensure that a system is not overwhelmed by using all available processing primarily of the build jobs. The build will use all CPUs by default unless --threads is also given, then N threads are used instead."
+What is the purpose of the following argument in the build command of ORFS: -n or --nice?,"The build script's -n or --nice flag sets all jobs to the maximum Unix ""niceness"" level. This determines the priority with which the operating system schedules processes. The aim is to prevent system overload by allocating all processing power primarily to the build jobs. Without specifying otherwise, the build utilizes all CPUs, but specifying --threads allows for the use of a fixed number of threads."
+What does the following argument do in the build command of ORFS: —yosys-args-overwrite?,This argument states to not use default flags set by this scrip during Yosys compilation.
+What does the --yosys-args-overwrite argument modify in the build command of ORFS?,This argument states to not use default flags set by this scrip during Yosys compilation.
+What does the following argument do in the build command of ORFS: —yosys-args-overwrite?,This parameter instructs the script to ignore the default flags during Yosys compilation.
+What is the purpose of the following argument in the build command of ORFS: —yosys-args STRING?,The '—yosys-args STRING' argument adds additional compilation flags for Yosys compilation.
+How does the --yosys-args STRING argument customize the build process in ORFS?,The '—yosys-args STRING' argument adds additional compilation flags for Yosys compilation.
+What is the purpose of the following argument in the build command of ORFS: —yosys-args STRING?,The '--yosys-args STRING' option allows for the inclusion of extra flags in Yosys compilations.
+What function does the following argument serve in the build command of ORFS: —openroad-args-overwrite?,The '—openroad-args-overwrite' argument specifies to not use default flags set by this script during OpenROAD app compilation.
+What modification does the --openroad-args-overwrite argument make in the build command of ORFS?,The '—openroad-args-overwrite' argument specifies to not use default flags set by this script during OpenROAD app compilation.
+What function does the following argument serve in the build command of ORFS: —openroad-args-overwrite?,The '--openroad-args-overwrite' option commands the script not to apply its default flags during OpenROAD app compilations.
+What does the following argument do in the build command of ORFS: —openroad-args STRING?,The '—openroad-args STRING' argument adds aditional compilation flags for OpenROAD app compilation.
+How does the --openroad-args STRING argument alter the build process in ORFS?,The '—openroad-args STRING' argument adds aditional compilation flags for OpenROAD app compilation.
+What does the following argument do in the build command of ORFS: —openroad-args STRING?,The '--openroad-args STRING' option introduces additional flags for compiling the OpenROAD app.
+What is the purpose of the following argument in the build command of ORFS: —lsoracle-enable?,This argument initiates compiling LSOracle since it is disabled by default as it is not currently used on the flow.
+What is the function of the --lsoracle-enable argument in the build command of ORFS?,This argument initiates compiling LSOracle since it is disabled by default as it is not currently used on the flow.
+What is the purpose of the following argument in the build command of ORFS: —lsoracle-enable?,"Activates the compilation of LSOracle, which is off by default as it's not part of the current workflow."
+What does the following argument do in the build command of ORFS: —lsoracle-args-overwrite?,The '—lsoracle-args-overwrite' argument stipulates not to use default flags set by this script during LSOracle compilation.
+What does the --lsoracle-args-overwrite argument change in the build command of ORFS?,The '—lsoracle-args-overwrite' argument stipulates not to use default flags set by this script during LSOracle compilation.
+What does the following argument do in the build command of ORFS: —lsoracle-args-overwrite?,The '--lsoracle-args-overwrite' command directs the script to bypass default flags for LSOracle compilations.
+What does the following argument achieve in the build command of ORFS: —lsoracle-args STRING?,This argument adds aditional compilation flags for LSOracle compilation.
+How does the --lsoracle-args STRING argument customize the ORFS build process?,This argument adds aditional compilation flags for LSOracle compilation.
+What does the following argument achieve in the build command of ORFS: —lsoracle-args STRING?,This command introduces extra compilation flags for LSOracle.
+What function does the following argument serve in the build command of ORFS: —install-path PATH?,The '—install-path PATH' delineates the path to install tools. Default is ${INSTALL_PATH}.
+What does the --install-path PATH argument specify in the build command of ORFS?,The '—install-path PATH' delineates the path to install tools. Default is ${INSTALL_PATH}.
+What function does the following argument serve in the build command of ORFS: —install-path PATH?,"The '--install-path PATH' option specifies the installation directory for tools, with ${INSTALL_PATH} as the default."
+What does the following argument do in the build command of ORFS: —clean?,The '—clean' argument calls the git clean command interactively before compiling. It is useful to remove old build files.
+What is achieved by the --clean argument in the build command of ORFS?,The '—clean' argument calls the git clean command interactively before compiling. It is useful to remove old build files.
+What does the following argument do in the build command of ORFS: —clean?,"The '--clean' argument triggers an interactive git clean command before compiling, helping remove outdated build files."
+What does the following argument do in the build command of ORFS: —clean-force?,This '—clean-force' argument will call git clean before compiling but WARNING: this option will not ask for confirmation. It is useful to remove old build files.
+How does the --clean-force argument function in the build command of ORFS?,This '—clean-force' argument will call git clean before compiling but WARNING: this option will not ask for confirmation. It is useful to remove old build files.
+What does the following argument do in the build command of ORFS: —clean-force?,"The '--clean-force' command enforces a git clean operation before compilation without seeking user confirmation, aiding in the deletion of old build files."
+What function does the following argument serve in the build command of ORFS: -c or --copy-platforms?,This argument is only applicable to docker builds. It is used to copy platforms inside the docker image.
+What does the -c or --copy-platforms argument do in the build command of ORFS?,This argument is only applicable to docker builds. It is used to copy platforms inside the docker image.
+What function does the following argument serve in the build command of ORFS: -c or --copy-platforms?,"This command is tailored for docker builds, enabling the copying of platforms into the docker image."
+What does the following argument do in the build command of ORFS: —docker-args-overwrite?,The ' —docker-args-overwrite' argument is only applicable for docker builds. They specify to not use default flags set by this script for Docker builds.
+What modification does the --docker-args-overwrite argument make in the build command of ORFS?,The ' —docker-args-overwrite' argument is only applicable for docker builds. They specify to not use default flags set by this script for Docker builds.
+What does the following argument do in the build command of ORFS: —docker-args-overwrite?,"The '--docker-args-overwrite' command is designated for docker builds, instructing not to use the script's default Docker build flags."
+What does the following argument do in the build command of ORFS: —docker-args STRING?,This argument is only applicable to docker builds. It is used to add additional compilation flags for the Docker build.
+How does the --docker-args STRING argument customize the ORFS build process?,This argument is only applicable to docker builds. It is used to add additional compilation flags for the Docker build.
+What does the following argument do in the build command of ORFS: —docker-args STRING?,"This command, specific to docker builds, allows adding extra compilation flags for Docker builds."
+"What does the following Synthesis variable, SYNTH_HIERARCHICAL do?","The variable  SYNTH_HIERARCHICAL enables synthesis hierarchically, otherwise considered flat synthesis."
+What does the SYNTH_HIERARCHICAL variable in Synthesis control?,"The variable  SYNTH_HIERARCHICAL enables synthesis hierarchically, otherwise considered flat synthesis."
+"What does the following Synthesis variable, SYNTH_HIERARCHICAL do?",SYNTH_HIERARCHICAL toggles between hierarchical and flat synthesis.
+"What does the following Synthesis variable, LATCH_MAP_FILE do?",LATCH_MAP_FILE variable specifies the list of latches treated as a black box by Yosys.
+What is the purpose of the LATCH_MAP_FILE variable in Synthesis?,LATCH_MAP_FILE variable specifies the list of latches treated as a black box by Yosys.
+"What does the following Synthesis variable, LATCH_MAP_FILE do?",LATCH_MAP_FILE lists latches considered as black boxes by Yosys.
+"What does the following Synthesis variable, CLKGATE_MAP_FILE do?",This variable specifies a list of cells for the gating clock treated as a black box by Yosys.
+How does the CLKGATE_MAP_FILE variable in Synthesis function?,This variable specifies a list of cells for the gating clock treated as a black box by Yosys.
+"What does the following Synthesis variable, CLKGATE_MAP_FILE do?",Specifies cells to treat as black boxes for clock gating in Yosys.
+"Can you explain the usage of this Synthesis variable, ADDER_MAP_FILE?",List of adders treated as a black box by Yosys.
+What does the ADDER_MAP_FILE variable in Synthesis specify?,List of adders treated as a black box by Yosys.
+"Can you explain the usage of this Synthesis variable, ADDER_MAP_FILE?",Lists adders treated as black boxes by Yosys.
+"What does the following Synthesis variable, TIEHI_CELL_AND_PORT do?","The variable, TIEHI_CELL_AND_PORT is used to tie high cells used in Yosys synthesis to replace a logical 1 in the Netlist."
+What does the TIEHI_CELL_AND_PORT variable in Synthesis define?,"The variable, TIEHI_CELL_AND_PORT is used to tie high cells used in Yosys synthesis to replace a logical 1 in the Netlist."
+"What does the following Synthesis variable, TIEHI_CELL_AND_PORT do?",TIEHI_CELL_AND_PORT identifies high tie cells used in Yosys synthesis to replace logical 1 in the Netlist.
+"What does the following Synthesis variable, TIELO_CELL_AND_PORT do?",This variable is used to tie low cells used in Yosys synthesis to replace a logical 0 in the Netlist.
+What does the TIELO_CELL_AND_PORT variable in Synthesis indicate?,This variable is used to tie low cells used in Yosys synthesis to replace a logical 0 in the Netlist.
+"What does the following Synthesis variable, TIELO_CELL_AND_PORT do?",Defines low tie cells used in Yosys synthesis to replace logical 0 in the Netlist.
+"What does the following Synthesis variable, MIN_BUF_CELL_AND_PORTS do?",The MIN_BUF_CELL_AND_PORTS variable is used to insert a buffer cell to pass through wires. Used in synthesis.
+How does the MIN_BUF_CELL_AND_PORTS variable in Synthesis operate?,The MIN_BUF_CELL_AND_PORTS variable is used to insert a buffer cell to pass through wires. Used in synthesis.
+"What does the following Synthesis variable, MIN_BUF_CELL_AND_PORTS do?","MIN_BUF_CELL_AND_PORTS inserts a buffer cell for wire pass-through, used in synthesis."
+"What does the following Synthesis variable, ABC_CLOCK_PERIOD_IN_PS do?","The variable,  ABC_CLOCK_PERIOD_IN_PS is used to specify the clock period to be used by STA during synthesis. Default value read from constraint.sdc."
+What does the ABC_CLOCK_PERIOD_IN_PS variable in Synthesis determine?,"The variable,  ABC_CLOCK_PERIOD_IN_PS is used to specify the clock period to be used by STA during synthesis. Default value read from constraint.sdc."
+"What does the following Synthesis variable, ABC_CLOCK_PERIOD_IN_PS do?","ABC_CLOCK_PERIOD_IN_PS sets the clock period for STA during synthesis, with a default from constraint.sdc."
+"What does the following Synthesis variable, ABC_DRIVER_CELL do?",Default driver cell used during ABC synthesis.
+What does the ABC_DRIVER_CELL variable in Synthesis specify?,Default driver cell used during ABC synthesis.
+"What does the following Synthesis variable, ABC_DRIVER_CELL do?",Specifies the default driver cell for ABC synthesis.
+"What does the following Synthesis variable, ABC_LOAD_IN_FF do?","During synthesis, the set_load value specified by this, ABC_LOAD_IN_FF variable is used."
+What does the ABC_LOAD_IN_FF variable in Synthesis imply?,"During synthesis, the set_load value specified by this, ABC_LOAD_IN_FF variable is used."
+"What does the following Synthesis variable, ABC_LOAD_IN_FF do?",ABC_LOAD_IN_FF sets the load value during synthesis.
+"What does the following Synthesis variable, MAX_UNGROUP_SIZE do?","For hierarchical synthesis, this variable ungroups modules of the size given by this variable."
+What does the MAX_UNGROUP_SIZE variable in Synthesis control?,"For hierarchical synthesis, this variable ungroups modules of the size given by this variable."
+"What does the following Synthesis variable, MAX_UNGROUP_SIZE do?","For hierarchical synthesis, ungroups modules based on specified size."
+"Tell me about the Floorplan variable, FLOORPLAN_DEF?",FLOORPLAN_DEF is used to specify the use of the DEF file to initialize floorplan.
+Can you explain the FLOORPLAN_DEF variable in Floorplan?,FLOORPLAN_DEF is used to specify the use of the DEF file to initialize floorplan.
+"Tell me about the Floorplan variable, FLOORPLAN_DEF?",FLOORPLAN_DEF uses a DEF file to initialize the floorplan.
+"Elaborate on the Floorplan variable, PLACE_SITE?",Placement site for core cells defined in the technology LEF file.
+What is the role of the PLACE_SITE variable in Floorplan?,Placement site for core cells defined in the technology LEF file.
+"Elaborate on the Floorplan variable, PLACE_SITE?",Defines the placement site for core cells in the technology LEF file.
+"Describe the use this Floorplan variable, TAPCELL_TCL?",TAPCELL_TCL specifies the path to the Endcap and Welltie cells file.
+How does the TAPCELL_TCL variable in Floorplan function?,TAPCELL_TCL specifies the path to the Endcap and Welltie cells file.
+"Describe the use this Floorplan variable, TAPCELL_TCL?",TAPCELL_TCL points to the Endcap and Welltie cells file.
+"What is the function of the Floorplan variable, RTLMP_FLOW?","This variable, RTLMP_FLOW enables the Hierarchical RTLMP flow. By default it is disabled."
+What does the RTLMP_FLOW variable in Floorplan control?,"This variable, RTLMP_FLOW enables the Hierarchical RTLMP flow. By default it is disabled."
+"What is the function of the Floorplan variable, RTLMP_FLOW?","RTLMP_FLOW toggles the Hierarchical RTLMP flow, defaulting to off."
+"Tell me about the Floorplan variable, MACRO_HALO?","MACRO_HALO specifies to keep out a distance from macro, in X and Y, to standard cell row."
+Can you describe the MACRO_HALO variable in Floorplan?,"MACRO_HALO specifies to keep out a distance from macro, in X and Y, to standard cell row."
+"Tell me about the Floorplan variable, MACRO_HALO?",MACRO_HALO sets the keep-out distance around macros in X and Y to standard cell rows.
+"Tell me about the Floorplan variable, MACRO_PLACEMENT?",MACRO_PLACEMENT specifies the path of a file on how to place certain macros manually using read_macro_placement.
+What does the MACRO_PLACEMENT variable in Floorplan specify?,MACRO_PLACEMENT specifies the path of a file on how to place certain macros manually using read_macro_placement.
+"Tell me about the Floorplan variable, MACRO_PLACEMENT?",MACRO_PLACEMENT defines manual macro placement through a specified file.
+"Elaborate on the Floorplan variable, MACRO_PLACEMENT_TCL?",This variable specifies the path of a TCL file on how to place certain macros manually.
+How does the MACRO_PLACEMENT_TCL variable in Floorplan operate?,This variable specifies the path of a TCL file on how to place certain macros manually.
+"Elaborate on the Floorplan variable, MACRO_PLACEMENT_TCL?",Specifies a TCL file for manual macro placement.
+"Describe the Floorplan variable, MACRO_PLACE_HALO?",Horizontal /vertical halo around macros (microns). Used by automatic macro placement.
+What does the MACRO_PLACE_HALO variable in Floorplan indicate?,Horizontal /vertical halo around macros (microns). Used by automatic macro placement.
+"Describe the Floorplan variable, MACRO_PLACE_HALO?","Sets the halo around macros for automatic placement, in microns."
+"Tell me about the Floorplan variable, MACRO_PLACE_CHANNEL?",Horizontal/vertical channel width between macros (microns). Used by automatic macro placement when RTLMP_FLOW is disabled. Imagine channel=10 and halo=5. Then macros must be 10 apart but standard cells must be 5 away from a macro.
+What does the MACRO_PLACE_CHANNEL variable in Floorplan define?,Horizontal/vertical channel width between macros (microns). Used by automatic macro placement when RTLMP_FLOW is disabled. Imagine channel=10 and halo=5. Then macros must be 10 apart but standard cells must be 5 away from a macro.
+"Tell me about the Floorplan variable, MACRO_PLACE_CHANNEL?","Determines the channel width between macros for automatic placement, in microns."
+"Give me details on the Floorplan variable, MACRO_BLOCKAGE_HALO?",Blockage width overridden from default calculation.
+Can you detail the MACRO_BLOCKAGE_HALO variable in Floorplan?,Blockage width overridden from default calculation.
+"Give me details on the Floorplan variable, MACRO_BLOCKAGE_HALO?",Overrides the default blockage width calculation.
+"Inform me about the Floorplan variable, PDN_TCL?","This variable specifies the file path which has a set of power grid policies used by pdn to be applied to the design, such as layers to use, stripe width and spacing to generate the actual metal straps."
+What is the purpose of the PDN_TCL variable in Floorplan?,"This variable specifies the file path which has a set of power grid policies used by pdn to be applied to the design, such as layers to use, stripe width and spacing to generate the actual metal straps."
+"Inform me about the Floorplan variable, PDN_TCL?",Specifies the file path for power grid policies used by pdn.
+"Tell me about the Floorplan variable, MAKE_TRACKS.",MAKE_TRACKS variable outlines the Tcl file that defines adding routing tracks to a floorplan.
+How does the MAKE_TRACKS variable in Floorplan function?,MAKE_TRACKS variable outlines the Tcl file that defines adding routing tracks to a floorplan.
+"Tell me about the Floorplan variable, MAKE_TRACKS.",MAKE_TRACKS outlines a Tcl file for adding routing tracks to a floorplan.
+"What is the function of the Floorplan variable, IO_PLACER_H?",The metal layer on which to place the I/O pins horizontally (top and bottom of the die).
+What does the IO_PLACER_H variable in Floorplan specify?,The metal layer on which to place the I/O pins horizontally (top and bottom of the die).
+"What is the function of the Floorplan variable, IO_PLACER_H?",Specifies the metal layer for horizontal I/O pin placement.
+"Inform me about the Floorplan variable, IO_PLACER_V?",The metal layer on which to place the I/O pins vertically (sides of the die).
+How does the IO_PLACER_V variable in Floorplan operate?,The metal layer on which to place the I/O pins vertically (sides of the die).
+"Inform me about the Floorplan variable, IO_PLACER_V?",Specifies the metal layer for vertical I/O pin placement.
+"Tell me about the Floorplan variable, GUI_NO_TIMING?",Skip loading timing for a faster GUI load.
+What does the GUI_NO_TIMING variable in Floorplan control?,Skip loading timing for a faster GUI load.
+"Tell me about the Floorplan variable, GUI_NO_TIMING?",Skips loading timing for faster GUI loading.
+"Give me a description for the following ‘Placement’ tool variable, HAS_IO_CONSTRAINTS?",Skip the initial non-IO based global placement if IO constraints are present.
+Can you describe the HAS_IO_CONSTRAINTS variable in the Placement tool?,Skip the initial non-IO based global placement if IO constraints are present.
+"Give me a description for the following ‘Placement’ tool variable, HAS_IO_CONSTRAINTS?",Skips initial non-IO based global placement if IO constraints exist.
+"Tell me about the ‘Placement’ tool variable, CELL_PAD_IN_SITES_GLOBAL_PLACEMENT?",Cell padding on both sides in site widths to ease routability during global placement.
+What does the CELL_PAD_IN_SITES_GLOBAL_PLACEMENT variable in Placement do?,Cell padding on both sides in site widths to ease routability during global placement.
+"Tell me about the ‘Placement’ tool variable, CELL_PAD_IN_SITES_GLOBAL_PLACEMENT?",Defines cell padding in site widths for global placement routability.
+"What does this ‘Placement’ tool variable, CELL_PAD_IN_SITES_DETAIL_PLACEMENT do?",Cell padding on both sides in site widths to ease routability in detail placement.
+How does the CELL_PAD_IN_SITES_DETAIL_PLACEMENT variable in Placement function?,Cell padding on both sides in site widths to ease routability in detail placement.
+"What does this ‘Placement’ tool variable, CELL_PAD_IN_SITES_DETAIL_PLACEMENT do?",Defines cell padding in site widths for detail placement routability.
+"Give me a description for the following ‘Placement’ tool variable, PLACE_DENSITY?",The desired placement density of cells. It reflects how spread the cells would be on the core area. 1.0 = closely dense. 0.0 = widely spread.
+What does the PLACE_DENSITY variable in Placement control?,The desired placement density of cells. It reflects how spread the cells would be on the core area. 1.0 = closely dense. 0.0 = widely spread.
+"Give me a description for the following ‘Placement’ tool variable, PLACE_DENSITY?",Sets the desired placement density of cells on the core area.
+"What does this ‘Placement’ tool variable, PLACE_DENSITY_LB_ADDON do?",Check the lower boundary of the PLACE_DENSITY and add PLACE_DENSITY_LB_ADDON if it exists.
+How does the PLACE_DENSITY_LB_ADDON variable in Placement operate?,Check the lower boundary of the PLACE_DENSITY and add PLACE_DENSITY_LB_ADDON if it exists.
+"What does this ‘Placement’ tool variable, PLACE_DENSITY_LB_ADDON do?",Adjusts the lower boundary of PLACE_DENSITY with an addon if present.
+"State the function of this OpenROAD ‘Placement’ tool variable, REPAIR_PDN_VIA_LAYER?",Remove power grid vias which generate DRC violations after detailed routing.
+What does the REPAIR_PDN_VIA_LAYER variable in Placement specify?,Remove power grid vias which generate DRC violations after detailed routing.
+"State the function of this OpenROAD ‘Placement’ tool variable, REPAIR_PDN_VIA_LAYER?",Removes power grid vias causing DRC violations after detailed routing.
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, GLOBAL_PLACEMENT_ARGS?",Use additional tuning parameters during global placement other than default args defined in gloabl_place.tcl.
+Can you explain the GLOBAL_PLACEMENT_ARGS variable in Placement?,Use additional tuning parameters during global placement other than default args defined in gloabl_place.tcl.
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, GLOBAL_PLACEMENT_ARGS?",Uses additional parameters for global placement beyond default args.
+"What does this OpenROAD ‘Placement’ tool variable, ENABLE_DPO do?",Enable detail placement with improve_placement feature.
+What does the ENABLE_DPO variable in Placement do?,Enable detail placement with improve_placement feature.
+"What does this OpenROAD ‘Placement’ tool variable, ENABLE_DPO do?",Enables detailed placement improvement.
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, DPO_MAX_DISPLACEMENT?",Specifies how far an instance can be moved when optimizing.
+How does the DPO_MAX_DISPLACEMENT variable in Placement function?,Specifies how far an instance can be moved when optimizing.
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, DPO_MAX_DISPLACEMENT?",Limits instance movement distance during optimization.
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, GPL_TIMING_DRIVEN?","In OpenROAD Flow Scripts (ORFS), the GPL_TIMING_DRIVEN variable specifies whether the global placer (gpl) should use timing driven-placement. Timing-driven placement will cause gpl to ocassionally run static timing analysis (sta) during placement in order to determine the timing on each net. gpl will then reweight the nets based on how timing-critical they are. This process improves the timing of the netlist by decreasing the distance between timing-critical cells, but it also causes an increase in gpl runtime due to running timing analysis."
+What does the GPL_TIMING_DRIVEN variable in Placement control?,"In OpenROAD Flow Scripts (ORFS), the GPL_TIMING_DRIVEN variable specifies whether the global placer (gpl) should use timing driven-placement. Timing-driven placement will cause gpl to ocassionally run static timing analysis (sta) during placement in order to determine the timing on each net. gpl will then reweight the nets based on how timing-critical they are. This process improves the timing of the netlist by decreasing the distance between timing-critical cells, but it also causes an increase in gpl runtime due to running timing analysis."
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, GPL_TIMING_DRIVEN?","GPL_TIMING_DRIVEN toggles timing-driven global placement, affecting gpl runtime and netlist timing."
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, GPL_ROUTABILITY_DRIVEN?","In OpenROAD Flow Scripts (ORFS), the GPL_ROUTABILITY_DRIVEN variable specifies whether the global placer (gpl) should use routability driven-placement. Routability-driven placement will cause gpl to ocassionally run global routing (grt) during placement in order to determine routing congestion hotspots. gpl will then reweight the nets based on how congestion data. This process improves the routability of the netlist by spacing out cells in routing congested areas, but it also causes an increase in gpl runtime due to running global routing."
+How does the GPL_ROUTABILITY_DRIVEN variable in Placement operate?,"In OpenROAD Flow Scripts (ORFS), the GPL_ROUTABILITY_DRIVEN variable specifies whether the global placer (gpl) should use routability driven-placement. Routability-driven placement will cause gpl to ocassionally run global routing (grt) during placement in order to determine routing congestion hotspots. gpl will then reweight the nets based on how congestion data. This process improves the routability of the netlist by spacing out cells in routing congested areas, but it also causes an increase in gpl runtime due to running global routing."
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, GPL_ROUTABILITY_DRIVEN?","GPL_ROUTABILITY_DRIVEN toggles routability-driven global placement, influencing gpl runtime and netlist routability."
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, CAP_MARGIN?",Specifies a capacitance margin when fixing max capacitance violations. This option allow you to overfix.
+What does the CAP_MARGIN variable in Placement specify?,Specifies a capacitance margin when fixing max capacitance violations. This option allow you to overfix.
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, CAP_MARGIN?",Sets a capacitance margin for overfixing max capacitance violations.
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, SLEW_MARGIN?",Specifies a slew margin when fixing max slew violations. This option allow you to overfix.
+How does the SLEW_MARGIN variable in Placement function?,Specifies a slew margin when fixing max slew violations. This option allow you to overfix.
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, SLEW_MARGIN?",Sets a slew margin for overfixing max slew violations.
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, CTS_ARGS?",Override clock_tree_synthesis arguments
+What does the CTS_ARGS variable in Clock Tree Synthesis control?,Override clock_tree_synthesis arguments
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, CTS_ARGS?",Overrides arguments for clock tree synthesis.
+What does CTS_BUF_CELL do in ORFS?,The CTS_BUF_CELL variable sets the root buffer cell used in the clock tree during clock tree synthesis (CTS)
+What is the purpose of the CTS_BUF_CELL variable in ORFS?,The CTS_BUF_CELL variable sets the root buffer cell used in the clock tree during clock tree synthesis (CTS)
+What does CTS_BUF_CELL do in ORFS?,CTS_BUF_CELL selects the root buffer cell for clock tree synthesis.
+What is the use of the ORFS variable FILL_CELLS?,The FILL_CELLS variable holds a list of cell names to use as filler cells. Wildcard patterns (*) are supported. Fill cells are used to fill empty cell sites which aids in satisfying design rules and density rules.
+How does the FILL_CELLS variable in ORFS function?,The FILL_CELLS variable holds a list of cell names to use as filler cells. Wildcard patterns (*) are supported. Fill cells are used to fill empty cell sites which aids in satisfying design rules and density rules.
+What is the use of the ORFS variable FILL_CELLS?,"FILL_CELLS lists cell names for filler cells, supporting wildcards."
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, HOLD_SLACK_MARGIN?",Specifies a time margin for the slack when fixing hold violations. This option allow you to overfix.
+What does the HOLD_SLACK_MARGIN variable in Clock Tree Synthesis specify?,Specifies a time margin for the slack when fixing hold violations. This option allow you to overfix.
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, HOLD_SLACK_MARGIN?",Specifies a time margin for fixing hold violations.
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, SETUP_SLACK_MARGIN?",Specifies a time margin for the slack when fixing setup violations.
+How does the SETUP_SLACK_MARGIN variable in Clock Tree Synthesis operate?,Specifies a time margin for the slack when fixing setup violations.
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, SETUP_SLACK_MARGIN?",Specifies a time margin for setup violation fixes.
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, SKIP_GATE_CLONING?",Do not use gate cloning transform to fix timing violations (default: use gate cloning)
+What does the SKIP_GATE_CLONING variable in Clock Tree Synthesis control?,Do not use gate cloning transform to fix timing violations (default: use gate cloning)
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, SKIP_GATE_CLONING?",Disables gate cloning for timing violation fixes.
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, SKIP_PIN_SWAP?",Do not use pin swapping as a transform to fix timing violations (default: use pin swapping)
+What does the SKIP_PIN_SWAP variable in Clock Tree Synthesis indicate?,Do not use pin swapping as a transform to fix timing violations (default: use pin swapping)
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, SKIP_PIN_SWAP?",Disables pin swapping for timing violation fixes.
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, TNS_END_PERCENT?","In OpenROAD Flow Scripts, the TNS_END_PERCENT variable specifies what percent of violating timing paths will be fixed during timing optimization. TNS_END_PERCENT must be a floating point value between 0-100. However, even if TNS_END_PERCENT is 0, the worst path will always be fixed. The purpose of this flag is to allow the user some control over how much runtime and logic area is spent on timing optimization, with a higher value leading to more runtime/area and a lower value leading to less runtime/area."
+How does the TNS_END_PERCENT variable in Clock Tree Synthesis function?,"In OpenROAD Flow Scripts, the TNS_END_PERCENT variable specifies what percent of violating timing paths will be fixed during timing optimization. TNS_END_PERCENT must be a floating point value between 0-100. However, even if TNS_END_PERCENT is 0, the worst path will always be fixed. The purpose of this flag is to allow the user some control over how much runtime and logic area is spent on timing optimization, with a higher value leading to more runtime/area and a lower value leading to less runtime/area."
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, TNS_END_PERCENT?",TNS_END_PERCENT defines the percent of timing path fixes during optimization.
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, EQUIVALENCE_CHECK?","In OpenROAD Flow Scripts, the EQUIVALENCE_CHECK variable toggles whether a logical equivalence check is run after timing optimization to ensure logical correctness of the circuit. If EQUIVALENCE_CHECK is 1, the check is performed. If EQUIVALENCE_CHECK is any other value or unset, the check is not run. The default value is unset."
+What does the EQUIVALENCE_CHECK variable in Clock Tree Synthesis specify?,"In OpenROAD Flow Scripts, the EQUIVALENCE_CHECK variable toggles whether a logical equivalence check is run after timing optimization to ensure logical correctness of the circuit. If EQUIVALENCE_CHECK is 1, the check is performed. If EQUIVALENCE_CHECK is any other value or unset, the check is not run. The default value is unset."
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, EQUIVALENCE_CHECK?",EQUIVALENCE_CHECK toggles logical equivalence checks post-optimization.
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, REMOVE_CELLS_FOR_EQY?","In OpenROAD Flow Scripts, the REMOVE_CELLS_FOR_EQY variable sets the list of cells to remove from the verilog netlist file produced specifically for netlist equivalence checking. Netlist equivalence checking is performed with the Yosys EQY tool. Wildcard patterns (*) are supported. This variable is passed directly to write_verilog -remove_cells <>."
+How does the REMOVE_CELLS_FOR_EQY variable in Clock Tree Synthesis operate?,"In OpenROAD Flow Scripts, the REMOVE_CELLS_FOR_EQY variable sets the list of cells to remove from the verilog netlist file produced specifically for netlist equivalence checking. Netlist equivalence checking is performed with the Yosys EQY tool. Wildcard patterns (*) are supported. This variable is passed directly to write_verilog -remove_cells <>."
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, REMOVE_CELLS_FOR_EQY?",REMOVE_CELLS_FOR_EQY lists cells to exclude from equivalence checking netlist files.
+What is the difference between Yosys and OpenROAD?,Yosys is a logic synthesis tool which is responsible for transforming register transfer-level (RTL) code into a gate-level netlist. OpenROAD is a place and route (P&R) tool which is responsible for implementing a gale-level netlist into a chip layout. Yosys is developed by the YosysHQ organization whereas OpenROAD is developed by The OpenROAD Project. OpenROAD Flow Scripts (ORFS) makes use of both of these tools (as well as KLayout) to form a full RTL-to-GDS flow.
+Can you contrast Yosys with OpenROAD in terms of functionality?,Yosys is a logic synthesis tool which is responsible for transforming register transfer-level (RTL) code into a gate-level netlist. OpenROAD is a place and route (P&R) tool which is responsible for implementing a gale-level netlist into a chip layout. Yosys is developed by the YosysHQ organization whereas OpenROAD is developed by The OpenROAD Project. OpenROAD Flow Scripts (ORFS) makes use of both of these tools (as well as KLayout) to form a full RTL-to-GDS flow.
+What is the difference between Yosys and OpenROAD?,"Yosys transforms RTL code into a gate-level netlist, while OpenROAD handles P&R from netlist to chip layout."
+Is there a simple way to open the GUI in ORFS?,"OpenROAD Flow Scripts (ORFS) includes Makefile targets to open the GUI after each step. You can use the command make gui_*, where * is the name of the flow step (e.g. make_floorplan)."
+Is there a straightforward method to launch the GUI in ORFS?,"OpenROAD Flow Scripts (ORFS) includes Makefile targets to open the GUI after each step. You can use the command make gui_*, where * is the name of the flow step (e.g. make_floorplan)."
+Is there a simple way to open the GUI in ORFS?,OpenROAD Flow Scripts include Makefile targets for GUI access after flow steps.
