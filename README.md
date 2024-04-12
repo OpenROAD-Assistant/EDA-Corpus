@@ -37,7 +37,7 @@ EDA Corpus consists of two types of data: (1) Question-answer pairs and (2) Prom
 
 ```python
 from openroad import Tech, Design
-from pathlib import path
+from pathlib import Path
 
 tech = Tech()
 # Make sure you have .lef files read into OpenROAD DB
