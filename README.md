@@ -43,12 +43,12 @@ tech = Tech()
 # Make sure you have .lef files read into OpenROAD DB
 design = Design(tech)
 
-designDir = Path(""design_path"")
-design_file_name = ""design_filename""
-design_top_module_name = ""design_top_module_name""
-verilogFile = designDir/str(design_file_name + "".v"")
-design.readVerilog(""verilogFile"")
-design.link(design_top_module_name)"}
+designDir = Path("design_path")
+design_file_name = "design_filename"
+design_top_module_name = "design_top_module_name"
+verilogFile = designDir/str(design_file_name + ".v")
+design.readVerilog("verilogFile")
+design.link(design_top_module_name)
 ```
 
 
