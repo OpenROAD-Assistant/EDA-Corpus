@@ -1,4 +1,4 @@
-code,prompt
+﻿code,prompt
 "# Get the current design block from the OpenROAD database
 block = ord.get_db_block()
 
@@ -1717,7 +1717,23 @@ for net in nets:
                 # Append the net to the result
                 result.append(net)
 return result",Get all the nets which are not connected to any pins and return them as list.
-,
+"# Get OpenDB
+db = ord.get_db()
+# Get all read libraries
+libs = db.getLibs()
+# Create a list to store the names
+libcell_name_list = []
+# Iterate through all libraries
+for lib in libs:
+	# Get all library cells in this library file
+        lib_masters = lib.getMasters()
+	# Iterate through all library cells
+        for master in lib_masters:
+		# Get the name of the library cell
+                libcell_name = master.getName()
+		# Add the name to the list
+                libcell_name_list.append(libcell_name)
+return libcell_name_list",Get the name of every liberty cell
 "# Get the current design block from the OpenROAD database
 block = ord.get_db_block()
 orientation = []
