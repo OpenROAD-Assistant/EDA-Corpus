@@ -1,0 +1,1008 @@
+﻿Prompts,Answers
+What is PDNGEN?,"The PDNGEN module (pdn) in OpenROAD aims to simplify the process of adding a power grid into a floorplan. A user can specify a small set of power grid policies to be applied to the design, such as the layers to use, stripe width, and spacing, and then pdn will generate the actual metal straps. Power grid policies can be defined over both the standard cell area and areas occupied by macros."
+What does the -switch_cell argument in PDN do while doing power switch insertion?,"During power switch insertion, the -switch_cell argument is used to specify the name of a coarse-grain power switch cell that is to be inserted wherever the standard cell rail connects to the rest of the power grid. The mesh layers are associated with the unswitched power net of the voltage domain, whereas the standard cell rail is associated with the switched power net of the voltage domain. The placement of a power switch cell connects the unswitched power mesh to the switched power rail through a power switch defined by the define_power_switch_cell command."
+What does the par module do?,"The partitioning module (par) is based on TritonPart, an open-source constraints-driven partitioner. par can be used to partition a hypergraph or a gate-level netlist. TritonPart solves multi-way partitioning by 1) constraints-driven coarsening, 2) initial partitioning, 3) refinement, 4) cut-overlay clustering and partitioning (COCP), and 5) V-cycle refinement. The purpose of partitioning a netlist is to reduce the complexity of a circuit so that algorithms can operate on smaller chunks of the netlist at a time. Partitioning a netlist may slightly reduce the optimization opportunities compared to a non-partitioned approach, but it greatly benefits the runtime. Partitioning a netlist may be the only option to feasibly operate on very large circuits."
+Is TritonRoute the foundation of drt?,"The Detailed Routing (drt) module in OpenROAD is based on the open-source detailed router TritonRoute. TritonRoute consists of several main building blocks, including pin access analysis, track assignment, initial detailed routing, search and repair, and a DRC engine. The initial development of the router is inspired by the ISPD-2018 initial detailed routing contest. However, the current drt framework differs and is built from scratch, aiming for an industrial-oriented, scalable, and flexible flow."
+What is the structure of OpenDB?,The structure of OpenDB is based on the text file formats LEF (library) and DEF (design) formats version 5.6. OpenDB supports a binary file format to save and load the design much faster than using LEF and DEF. OpenDB is written in C++ 98 with standard library-style iterators. The classes are designed to be fast enough to base an application on without having to copy them into application-specific structures.
+How is FastRoute better than previous routing frameworks?,"FastRoute innovates over prior routing frameworks because it integrates several novel techniques: fast congestion-driven via-aware Steiner tree construction, 3-bend routing, virtual capacity adjustment, multi-source multi-sink maze routing, and spiral layer assignment. These techniques not only address the routing congestion measured at the edges of global routing grids but also minimize the total wirelength and via usage, which is critical for subsequent detailed routing, yield, and manufacturability. Experimental results show that FastRoute is highly effective and efficient in solving ISPD07 and ISPD08 global routing benchmark suites. The results outperform recently published academic global routers in both routability and runtime. In particular, for ISPD07 and ISPD08 global routing benchmarks, FastRoute generates 12 congestion-free solutions out of 16 benchmarks with a speed significantly faster than other routers."
+What does RTLMP do?,"A macro placer (MP) is an algorithm which specifically focuses on placing macros in the core area. RTL­MP is a novel macro placer that utilizes RTL information and tries to “mimic” the interaction between the frontend RTL designer and the back­ end physical design engineer to produce human­-quality floorplans. By exploiting the logical hierarchy and processing logical modules based on connection signatures, RTL­MP can capture the dataflow inherent in the RTL and use the dataflow information to guide macro placement."
+What was the need to develop Hier-RTLMP?,"Recently, with the increasing complexity of IP blocks, and in particular with auto-generated RTL for machine learning (ML) accelerators, the number of macros in a single RTL block can easily run into several hundred. This makes the task of generating an automatic floorplan (.def) with IO pin and macro placements for front-end physical synthesis even more critical and challenging. The so-called peripheral approach of forcing macros to the periphery of the layout is no longer viable when the ratio of the sum of the macro perimeters to the floorplan perimeter is large since this increases the required stacking depth of macros. Thus, a novel multilevel physical planning approach that exploits the hierarchy and dataflow inherent in the design RTL, and describes its realization in a new hierarchical macro placer, Hier-RTLMP was developed. "
+How is Hier-RTLMP different from RTL-MP?,"Hier-RTLMP consists of an auto-clustering engine that transforms the logical hierarchy into a physical hierarchy. Unlike RTL-MP where the physical hierarchy is a single level, Hier-RTLMP’s autoclustering engine creates a multilevel physical hierarchy of physical clusters. This enables the handling of large RTLs with hundreds of macros and allows for the placement of macros within the core area."
+How does FastRoute work?,"The first part of the FastRoute framework is topology generation. Because FastRoute tries to avoid rip-up and reroute to reduce both wirelength and runtime, the initial tree topology has significant impacts. With the congestion-driven and via-aware topology, the next stage of FastRoute is actual routing. We find that there exists significant potential to improve traditional routing techniques in terms of via control and congestion reduction. The most commonly used routing techniques in global routing include L/Z/U pattern routing, monotonic routing, and maze routing. In addition to new topology and routing techniques, Fast Route integrates several performance enhancement techniques to further improve routing quality and reduce run time."
+Why is RSMT used more?,"Traditionally, global routing just uses tree structures like RMST or RSMT while RSMT is becoming more popular due to its minimal wirelength to connect a multi-pin net."
+"Tab completion does work in console mode but not in GUI mode, why?","The OpenROAD GUI is made from custom Qt code and does not apply to the console. OpenROAD relies on the tclreadline package, which doesn't work well with imported namespaces."
+"What do these Debug output mean?
+[INFO MPL-0024] [Multilevel Autoclustering] Creating clustered netlist.
+[INFO MPL-0039] [Coarse Shaping] Determining shape functions for clusters.
+[INFO MPL-0028] [Hierarchical Macro Placement] Placing clusters and macros.
+[INFO MPL-0037] Updated location of 95 macros
+Delete buffers for RTLMP flow...
+[INFO RSZ-0026] Removed 0 buffers.","Messages with the MPL prefix are from the macro placement (mpl) module. These messages are progress messages, informing the user which step of the HierRTLMP flow is being executed."
+What are the units of the -pad_right and -pad_left arguments of the global_placement function,"In global_placement, -pad_right and -pad_left add padding which is measured in cell sites to effectively make the cell appear wider. pad_left adds a pad to the left side, pad_right adds it to the right side. Wider cells during global placement can help reduce placement congestion and make finding a valid placement easier."
+Does space padding influence the design utilization? I feel like it shouldn't.,"Cell padding only impacts the way the global placer (gpl) and detailed placer (dpl) sees the cells. Cell padding does not change the logic area of the cell from the user perspective. If you were to use the report_design_area command, you would see the unpadded design utilization reported."
+"Wouldn't manually adding pads in the global_placement function reduce the maximum design utilization possible for a design? Especially since OpenROAD wants to be automatic, GPL will stop everything if it sees a DU >100% even if it could achieve a reasonable DU with equivalent padding","Cell padding can reduce the maximum possible design utilization. If you don't want padding in your design, you can reduce the default padding or turn it off. However, padding is usually necessary to achieve a cleanly routed design, because cells which are too close together may make routing impossible. If you want to optimize for very high-density designs, I believe you can also set padding on a master-by-master basis so that only the most difficult cells are padded. This process may take some trial and error."
+Why did I encounter an issue with CORE_UTILIZATION when trying to aim for a DU of 70% on the ASAP7 PDK which should be possible and reasonable for any design?,"If you are using ORFS, the CORE_UTILIZATION variable only determines the core utilization after Yosys (synthesis) runs using the netlist data. The utilization can change dramatically as OpenROAD performs timing optimization, which will insert buffers, remove buffers, and resize cells. For example, if you set CORE_UTILIZATION to 70% utilization during the initialization step, you may end up with 90%+ utilization because of optimization to meet timing constraints. It is currently up to the designer to ensure that the CORE_UTILIZATION is set appropriately, which may require some trial and error."
+"If I have a design for which the detailed placement fails for a few instances, if I relax my timing constraints will it result in a successful placement?","Relaxing timing constraints can usually reduce your design utilization because fewer buffers will need to be inserted. However, detailed placement can fail for several reasons, including 1) setting core utilization too high, 2) not having enough cell padding during global placement, 3) having too much cell padding during detailed placement, 4) having a poor macro placement which will block placement of some standard cells"
+"The timing optimizations done by the synthesis tool are ""discarded"" as the buffers are removed?","Empiracally, the OpenROAD team has found that OpenROAD optimizes better when the buffers from Yosys are removed, because Yosys does not do physical synthesis."
+Is there no need to re-synthesize with different timing constraints with Yosys? Or does it also use different/bigger non-buffer cells that also need to be resized?,"Empirically, applying timing constraints to Yosys for synthesis does not have much impact on the output netlist. However, the results may not be identical if the timing constraints are changed."
+"What does this warning mean? 
+[WARNING ODB-0208] VIA: duplicate VIA (via5_6_120_288_1_2_58_322) ignored...","This warning likely occurs because of multiple block abstracts with the same via. To fix this problem, one should ensure that the block abstracts do not have duplicates via definitions."
+"Upon attempting to read an invalid ODB file, OpenROAD doesn't attempt to validate it and instead crashes with a cryptic message of Error: read_db.tcl, 1 ios_base::clear: unspecified iostream_category error. Why is this happening?","I would advise against using low-level OBD APIs to interact with OpenROAD. User-facing APIs in OpenROAD have documentation and error checking to prevent improper usage, however low-level APIs may not have error checking for performance reasons. In this case, it appears the db you are creating does not have a logger and can't issue any messages."
+What is IR Drop Analysis?,"The IR Drop Analysis module in OpenROAD (psm) is based on PDNSim, an open-source static IR analyzer. PDNSim will perform a simulation based on the estimated current draw of each instance to estimate what is the voltage drop seen at each cell. That is, it shows the voltage drop between the voltage source(s) of the chip and each instance."
+What are the features of IR Drop analysis?,"The features of IR Drope analysis are: reporting the worst IR drop, reporting the worst current density over all nodes and wire segments in the power distribution network (given a placed and PDN-synthesized design), checking for floating PDN stripes on the power and ground nets, and spice netlist writer for power distribution network wire segments."
+What is Flute3?,Flute3 is an open-source rectilinear Steiner minimum tree heuristic with improvements made by UFRGS students and James Cherry. This tool is used for the calculation of wirelength in grt and rsz.
+What is OpenDB?,"OpenDB is a design database to support tools for physical chip design. It was originally developed by Athena Design Systems. Nefelus, Inc. acquired the rights to the code and open-sourced it with BSD-3 license in 2019 to support the DARPA OpenROAD project. The structure of OpenDB is based on the text file formats LEF (library) and DEF (design) formats version 5.6. OpenDB supports a binary file format to save and load the design much faster than using LEF and DEF. OpenDB is written in C++ 98 with standard library style iterators. The classes are designed to be fast enough to base an application on without having to copy them into application-specific structures."
+What is Automatic Code Generator used for?,The automatic code generator in OpenROAD is used to generate code for OpenDB objects and Iterators. It uses JSON input and automatically generates corresponding C++ files
+What commands are used to read and write design data in OpenROAD?,"OpenROAD is run using Tcl scripts. The following commands are used to read and write design data.
+read_lef [-tech] [-library] filename
+read_def filename
+write_def [-version 5.8|5.7|5.6|5.5|5.4|5.3] filename
+read_verilog filename
+write_verilog filename
+read_db filename
+write_db filename
+write_abstract_lef filename"
+"What support does OpenROAD have for Abstract LEF?
+",OpenROAD contains an abstract LEF writer that can take your current design and emit an abstract LEF representing the external pins of your design and metal obstructions. Use the write_abstract_lef  command to generate the abstract LEF.
+What does the global_connect command do?,Global connections are typically used to define connections between a supply net (such as power/ground) and the supply pins on cells. The global_connect command is used to define logical connections between supply pins on design instances and their respective supply nets. Note that the global_connect command only creates a logical connection; it does not perform any routing for a physical connection.
+What does the clear_global_connect command do?,Global connections are typically used to define connections between a supply net (such as power/ground) and the supply pins on cells. The clear_global_connect command is used to clear previously declared connections between supply pins on design instances and their respective supply nets. Note that the clear_global_connect command only clears the logical connections; it does not remove any routing or physical connections.
+What does the report_global_connect command do?,Global connections are typically used to define connections between a supply net (such as power/ground) and the supply pins on cells. The report_global_connect command is used to print out the currently defined global connection rules.
+What does the report_cell_usage command do?,The report_cell_usage command is used to print out the number of instances of each type of cell (master) used in the design.
+How does OpenROAD compute the die area when using the core_utilization argument in the initialize_floorplan?,"To compute the die area for the initialize_floorplan command, OpenROAD first calculates the core area by dividing the total logic area of the instances coming from synthesis and by the specified core_utilization. OpenROAD then shapes that core area based on the aspect_ratio parameter. Finally, OpenROAD expands the core area by adding a core margin on each edge of the core area. Altogether, this forms the die area."
+I would like to know if there is any way to write the log output from OpenROAD into a file (using a report_ type command)?,"To capture output from OpenROAD, you can use standard Unix file operations and redirections. OpenROAD outputs all messages directly to the stdout I/O stream."
+What is the minimum number of metal layers OpenROAD can route in?,"OpenROAD has the theoretical ability to route as few as two layers, but it has rarely been tried by the developers due to the lack of a specialized channel router. It is expected that OpenROAD will hit some issues and have to iterate. If you try this and run into issues, please kindly file an issue on GitHub. However, if the PDK is proprietary, it will be more difficult for the OpenROAD team to diagnose and debug."
+"Can OpenROAD work with multi-VT cells (HVT, LVT, SVT) and swap between them in a single run?","OpenROAD supports using multi-VT cell libraries, and it can swap between VT cells during optimization."
+Can OpenROAD work with Multi-Mode-Multi-Corner Files (mmmc) ?,"OpenROAD supports multi-corner Static Timing Analysis (STA), but it doesn't currently support multi-mode STA. ""MMMC"" files from proprietary tools are stored in proprietary formats, which OpenROAD cannot support. The OpenSTA manual will contain more information about how to run multi-corner analysis."
+Is SystemVerilog support limited to the constructs that Yosys supports?,The OpenROAD Flow is limited to the RTL language support that the Yosys synthesizer provides. Yosys currently provides support for a limited subset of SystemVerilog and full support for Verilog. OpenROAD only supports structural Verilog netlists.
+What is the job of Pin Placer?,"Place pins on the boundary of the die on the track grid to minimize net wirelengths. Pin placement also creates a metal shape for each pin using min-area rules. For designs with unplaced cells, the net wirelength is computed considering the center of the die area as the unplaced cells' position."
+What does Antenna Rule Checker do?,"This tool checks antenna violations and generates a report to indicate violated nets. See LEF/DEF 5.8 Language Reference, Appendix C, ""Calculating and Fixing Process Antenna Violations"" (p.389) for a description of antenna violations."
+What is Clock Tree Synthesis in OpenROAD?,"Clock tree synthesis (CTS) is the step of distributing a clock to all endpoints (such as flip-flops) while trying to minimize power and skew (the different in clock arrival times between two registers). The clock tree synthesis module in OpenROAD (cts) is based on TritonCTS 2.0, and can be run using the clock_tree_synthesis command. TritonCTS 2.0 features on-the-fly characterization, and therefore does not need to pre-generate characterization data. The on-the-fly characterization feature can be optionally controlled by parameters specified by the configure_cts_characterization command. You can use the set_wire_rc command to set the clock routing layer used when calculating parasitics in this step."
+Tell me about Detailed Placement in OpenROAD?,"The detailed placement module in OpenROAD (dpl) is based on OpenDP or Open-Source Detailed Placement Engine. Its key features are
+fence region and fragmented ROWs."
+Describe the Restructure module in OpenROAD?,The restructure module in OpenROAD (rmp) is based on an interface to ABC for local resynthesis. The package allows logic restructuring that targets area or timing. It extracts a cloud of logic using the OpenSTA timing engine and passes it to ABC through the blif interface. Multiple recipes for area or timing are run to obtain multiple structures from ABC; the most desirable among these is used to improve the netlist. The ABC output is read back by a blif reader which is integrated into OpenDB. Blif writer and reader also support constants from and to OpenDB. Reading back of constants requires insertion of tie cells which should be provided by the user as per the interface described below.
+What is RePlAce in OpenROAD?,"RePlAce is a tool for advancing solution quality and routability validation in Global Placement. Its features are analytic and nonlinear placement algorithms. it solves electrostatic force equations using Nesterov's method, verified with various commercial technologies and research enablements using OpenDB, verified deterministic solution generation with various compilers and OS, and supports Mixed-size placement mode."
+What is Hierarchical Macro Placement/ Hier-RTLMP?,"""Hier-RTLMP"" is defined as a hierarchical automatic macro placer for large-scale complex IP blocks. This tool builds on the existing RTLMP (mpl) framework, adopting a multilevel physical planning approach that exploits the hierarchy and data flow inherent in the design RTL."
+Describe Parallax Static Timing Analyzer or OpenSTA?,"OpenSTA is a gate-level static timing verifier. As a stand-alone executable, it can be used to verify the timing of a design using standard file formats. OpenSTA uses a TCL command interpreter to read the design, specify timing constraints, and print timing reports."
+What file formats are supported by Parallax Static Timing Analyzer or OpenSTA?,"The Following standard file formats are supported by Parallax Static Timing Analyzer or OpenSTA: Verilog netlist, Liberty library, SDC timing constraints,SDF delay annotation, and SPEF parasitics."
+"`auto_place_pins pin_layer` places pins on a single layer but It should be able to place vertical pins (sides of the die) and horizontal pins (top and bottom of the die) in separate layers, why is it not able to do this?","I currently recommend using `io_placer` instead of `auto_place_pins`. Here's an example:```io_placer -hor_layer 3 -ver_layer 2```Note that `io_placer` uses cell placement information to guide the I/O pin placement. If placement has not yet been run, the `-random` flag is required, which will distribute the pins evenly over the die boundary."
+What dependencies are required for TritonPart?,TritonPart in OpenROAD uses Google OR-Tools as the ILP solver. Please install Google OR-Tools.
+What is DFT?,This tool is an implementation of Design For Testing. New nets and logic are added to allow IC designs to be tested for errors in manufacturing. Physical imperfections can cause hard failures and variability can cause timing errors.
+Tell me about the parts of DFT insertion?,"A simple DFT insertion consists of the following parts: a scan_in pin where the test patterns are shifted in, a scan_out pin where the test patterns are read from, scan cells that replace flops with registers that allow for testing, one or more scan chains (shift registers created from your scan cells), a scan_enable pin to allow your design to enter and leave the test mode."
+What is Read UPF Utility?,"This module contains functionality to read, and modify information from Unified Power Format (UPF) files."
+What is Metal fill?,"Metal filling is a common process in integrated circuit design to enhance manufacturability and yield by making the density of metal shapes more uniform across the design. In OpenROAD, the Finale module (fin) inserts floating metal fill shapes to meet metal density design rules while obeying DRC constraints. The rules for generating metal fill shapes are driven by a JSON configuration file, and the schema can be found in the OpenROAD documentation."
+Explain Chip-level Connections in OpenROAD?,"The chip-level connections module in OpenROAD (pad) is based on the open-source tool ICeWall. In this utility, either place an IO ring around the boundary of the chip and connect with either wirebond pads or a bump array."
+Brief me on the parasitics extraction module?,"The parasitics extraction module in OpenROAD (rcx) is based on the open-source OpenRCX, a Parasitic Extraction (PEX, or RCX) tool that works on OpenDB design APIs. It extracts routed designs based on the LEF/DEF layout model.
+OpenRCX extracts both Resistance and Capacitance for wires, based on coupling distance to the nearest wire and the track density context over and/or under the wire of interest, as well as cell abstracts. The capacitance and resistance measurements are based on equations of coupling distance interpolated on exact measurements from a calibration file, called the Extraction Rules file. The Extraction Rules file (RC technology file) is generated once for every process node and corner, using a provided utility for DEF wire pattern generation and regression modeling.
+OpenRCX stores resistance, coupling capacitance, and ground (i.e., grounded) capacitance on OpenDB objects with direct pointers to the associated wire and via db objects. Optionally, OpenRCX can generate a .spef file."
+What are the Gate Resizer commands?,The resizer commands stop when the design area is -max_utilization util percent of the core area. util is between 0 and 100. The resizer stops and reports an error if the maximum utilization is exceeded.
+What is macro placement?,"The macro placement module in OpenROAD (mpl) is based on TritonMacroPlacer, an open-source ParquetFP-based macro cell placer. The macro placer places macros/blocks honoring halos, channels, and cell row ""snapping"". Run global_placement before macro placement."
+What is global routing?,"The global routing module in OpenROAD (grt) is based on FastRoute, an open-source global router originally derived from Iowa State University's FastRoute4.1 algorithm. Global routing is responsible for creating routing guides for each net to simplify the job of the detailed router. The purpose of global routing is mainly to avoid overcongestion when creating the guides."
+Elaborate on FastRoute?,"FastRoute is a global routing tool for VLSI back-end design. It is based on sequential rip-up and re-route (RRR) and a lot of novel techniques. FastRoute 1.0 first uses FLUTE to construct congestion-driven Steiner trees, which will later undergo the edge-shifting process to optimize tree structure to reduce congestion. It then uses pattern routing and maze routing with a logistic function-based cost function to solve the congestion problem. FastRoute 2.0 proposed monotonic routing and multi-source multi-sink maze routing techniques to enhance the capability to reduce congestion. FastRoute 3.0 introduced the virtual capacity technique to adaptively change the capacity associated with each global edge to divert wire usage from highly congested regions to less congested regions. FastRoute 4.0 proposed via-aware Steiner tree, 3-bend routing, and a delicate layer assignment algorithm to effectively reduce via count while maintaining outstanding congestion reduction capability. FastRoute 4.1 simplifies the way the virtual capacities are updated and applies a single set of tuning parameters to all benchmark circuits"
+Brief me on OpenROAD Flow?,"OpenROAD-flow-scripts (ORFS) is a fully autonomous, RTL-GDSII flow for rapid architecture and design space exploration, early prediction of QoR, and detailed physical design implementation. However, ORFS also enables manual intervention for finer user control of individual flow stages through Tcl commands and Python APIs."
+"I'm trying to port ORFS to a TSMC process. During the detailed route step, I get a lot of DRT-0073 errors. Utilization is set to 20% at the beginning of the P&R flow and it is a pretty simple design. Give me some tips about what to look into?
+I have tried to run the pin_access command directly but the -verbose parameter does not seem to work as I don't get any more information","You can try the developer debugs to get a sense of what is going on. Put detailed_route_debug -pa -pa_markers -pin _3504_:A1 before you call detailed_route and run it in the GUI. It will stop at the pin and show you how it is trying to access it and any associated drc markers. You click the continue button to see the various steps. Hopefully, that gives you an idea as to what is going on. The other option is a support contract with precisioninno.com where we can help under NDA.
+"
+"Is there any way I can use just the RTL-MP2 stand-alone on either an RTL design or a gate netlist? The issue is, that we use proprietary tools so do not have an OpenDB database for our designs.","OpenROAD supports interoperability with other EDA tools through the industry standard Verilog, LEF, and DEF formats. In this case, you can import a DEF file into OpenROAD from an external tool, run RTL-MP2, and then export the DEF file. The DEF file format should be supported by nearly all EDA physical design tools."
+How do I check DRC?,"In OpenROAD, you can use the check_drc command to run the design rule check (DRC). It should be noted that check_drc is not a general-purpose checker and only verifies signal routing according to routing rules from the technology LEF file. check_drc also requires routing guides in order to run, so global routing must be performed first. DRC is also commonly performed by an external tool which will check all layers, not just the metal routing layers."
+What does the argument -floorplan_initialize do in read_def?,"When using the read_def command with the -floorplan_initialize argument, OpenROAD will read only physical placement information such as pin locations and instance locations. It does not read or redefine the netlist."
+What does the argument -skip_pin_swap & -skip_gate_cloning do in repair_timing?,"These flags disable optimizations in case of trouble or unexpected results. They are mainly included as a failsafe for users, rather than something that is expected to be used."
+What does the detailed_placement command do in OpenROAD?,"The detailed_placement command moves instances to legal locations after global placement. While the global placer (gpl) may place cells in a roughly optimal position, gpl may not place the cells in legal locations because they may not be aligned to cell rows or sites. The detailed placer (dpl) will legalize the cell by shifting it to a nearby location which is aligned to the cell site grid. The detailed_placement command only performs basic legalization and does not attempt to optimize placement. The optimize_mirroring and improve_placement commands will perform optimization on the legalized cells."
+"What does the argument -max_displacement disp|{disp_x disp_y} do in detailed_placement
+Command?","Max distance that an instance can be moved (in microns) when finding a site where it can be placed. Either set one value for both directions or set {disp_x disp_y} for individual directions. The default values are {0, 0}, and the allowed values within are integers [0, MAX_INT]. This argument is useful because it limits the amount of searching and therefore amount of runtime that the detailed placer can use."
+What does the argument -disallow_one_site_gaps do in the detailed_placement command?,"detailed_place -disallow_one_site_gaps will disallow the detailed placer from leaving gaps between cells that are exactly one cell sitewide. This feature is mainly useful for PDKs that do not have filler cells which are one site-wide. In this case, one-site-wide gaps are unfillable and will cause DRC violations."
+What does the argument -report_file_name do in the detailed_placement command?,"The -report_file_name argument for the detailed_placement command specifies where the report for detailed placement should be saved. The report is saved in the JSON format and contains metrics related to detailed_placement. If this argument is not provided, no report will be saved for the detailed_placement command."
+What does the Set Placement Padding command do?,"The set_placement_padding command sets left and right padding in multiples of the row site width. Use the set_placement_padding command before legalizing placement to leave room for routing. Use the -global flag for padding that applies to all instances. Use -instances for instance-specific padding. The instances insts can be a list of instance names, or an instance object returned by the SDC get_cells command. To specify padding for all instances of a common master, use the -filter ""ref_name == "" option to get_cells."
+What is the significance of the filler_placement command?,"The filler_placement command fills gaps between detail-placed instances to connect the power and ground rails in the rows. filler_masters is a list of master/macro names to use for filling the gaps. Wildcard matching is supported, so FILL* will match, e.g., FILLCELL_X1 FILLCELL_X16 FILLCELL_X2 FILLCELL_X32 FILLCELL_X4 FILLCELL_X8. To specify a different naming prefix from FILLER_ use -prefix <new prefix>."
+What is the purpose of the remove_fillers command?,This command removes all filler cells.
+What does the check_placement command do?,The check_placement command checks the placement legality. It returns 0 if the placement is legal.
+What does the argument -verbose in the check_placement command do?,The -verbose argument enables verbose logging in the check_placement command.
+What does the argument -disallow_one_site_gaps in the check_placement command do?,The argument -disallow_one_site_gaps disables one site gap during placement check.
+What role does this argument -report_file_name play in the check_placement command?,The argument -report_file_name in check_placement command files name for saving the report (e.g. report.json).
+What does the optimize_mirroring command do?,The optimize_mirroring command mirrors instances about the Y axis in a weak attempt to reduce the total half-perimeter wirelength (HPWL). No arguments are needed for this function.
+What are some useful developer commands in the detailed placement module in OpenROAD (dpl)?,"If you are a developer, you might find the following commands useful, 1. detailed_placement_debug: debug detailed placement. 2. get_masters_arg: get masters from a design. 3. get_inst_bbox: get the bounding box of an instance. 4. get_inst_grid_bbox: get the grid bounding box of an instance. 5. format_grid: format grid (takes in length x and site width w as inputs). 6. get_row_site: get row site name."
+What does the argument [-max_length <int>] do in the set_dft_config command of DFT- Design For Testing?,The argument [-max_length <int>] takes an integer as input for setting the maximum number of bits that can be in each scan chain.
+What does the argument [-clock_mixing] do in the set_dft_config command of DFT?,The argument [-clock_mixing] dictates how the architect mixes the scan flops based on the clock driver. The value no_mix creates scan chains with only one type of clock and edge. This may create unbalanced chains. The value clock_mix creates scan chains mixing clocks and edges. Falling edge flops are going to be stitched before the rising edge.
+What does the report_dft_config command do in DFT- Design For Testing?,The report_dft_config command prints the current DFT configuration to be used by preview_dft and insert_dft.
+What does the preview_dft command do in DFT- Design For Testing?,This command prints a preview of the scan chains that will be stitched by insert_dft. Use this command to iterate and try different DFT configurations. This command does not perform any modification to the design.
+What does the argument [-verbose] do in the preview_dft command of DFT- Design For Testing?,The preview_dft command shows more information about each one of the scan chains that will be created.
+What does the insert_dft command do in DFT- Design For Testing?,"The insert_dft command implements the scan chains into the design by performing the following actions: Scan Replace, Scan Architect, Scan Stitch. The result is a design with scan flops connected to form the scan chains."
+Can you give me an example of a basic Design for Testing command?,Here is an example that will create scan chains with a max length of 10 bits mixing all the scan flops in the scan chains: set_dft_config -max_length 10 -clock_mixing clock_mix report_dft_config preview_dft -verbose insert_dft.
+What are the limitations of Design for Testing (DFT)?,"The limitations of DFT-Design for Testing are as follows: there are no optimizations for the scan chains, this is a WIP, there is no way to specify existing scan ports to be used by scan insertion, there is currently no way to define a user-defined scan path, and can only work with one-bit cells."
+What is the report_cts command in Clock Tree Synthesis (cst) in OpenROAD used for?,"It is used to extract metrics after a successful clock_tree_synthesis run. These metrics are the number of Clock Roots, number of Buffers Inserted, number of Clock Subnets, and number of Sinks."
+What does the argument -out_file in report_cts command in Clock Tree Synthesis (cst) in OpenROAD do?,"The file to save cts reports. If this parameter is omitted, the report is streamed to stdout and not saved."
+What does the clock_tree_synthesis_debug command in Clock Tree Synthesis (cst) in OpenROAD do?,This command is an option to plot the CTS to GUI.
+Which environment is required for setting up OpenROAD flow scripts?,You can use the bash shell to run commands and scripts.
+What are the ways of installing OpenROAD flow scripts/ ORFS?,"These are the ways of installing OpenROAD flow scripts/ ORFS: Docker, Pre-built Binaries, Windows Subsystem for Linux (WSL), and Local Installation."
+What is the basic build command for OpenROAD flow scripts/ ORFS?,The basic basic build command in ORFS is ./build_openroad.sh --help.
+What does the following argument do in the build command of ORFS: -o or —local?,"The argument, o or —local, builds locally instead of building a Docker image."
+What operation does the -l or --latest argument perform in the build command of ORFS?,The -l or --latest argument specifies to use of the head of branch –or_branch or ‘master’ by default for tools/OpenROAD.
+How is this argument utilized in the build command of ORFS: --or_branch BRANCH_NAME?,The -or_branch BRANCH_NAME argument stipulates the use of the head of branch BRANCH for tools/OpenROAD.
+What role does this argument play in the build command of ORFS: --or_repo REPO_URL?, This argument enumerates to use of a fork at REPO-URL (https/ssh) for tools/OpenROAD.
+What does the following argument do in the build command of ORFS: --no_init?,The --no_init argument prescribes skipping initializing submodules.
+How does the following argument function in the build command of ORFS: -t N or --threads N?,The -t N or --threads N argument stipulates the use of N cpus when compiling software.
+What is the purpose of the following argument in the build command of ORFS: -n or --nice?,"The -n or --nice flag in the build script instructs the build script to set all jobs to the maximim Unix ""niceness"". Niceness determines how much the operating system prefers to schedule process. The purpose of setting this flag is to ensure that a system is not overwhelmed by using all available processing primarily of the build jobs. The build will use all CPUs by default unless --threads is also given, then N threads are used instead."
+What does the following argument do in the build command of ORFS: —yosys-args-overwrite?,This argument states to not use default flags set by this scrip during Yosys compilation.
+What is the purpose of the following argument in the build command of ORFS: —yosys-args STRING?,The '—yosys-args STRING' argument adds additional compilation flags for Yosys compilation.
+What function does the following argument serve in the build command of ORFS: —openroad-args-overwrite?,The '—openroad-args-overwrite' argument specifies to not use default flags set by this script during OpenROAD app compilation.
+What does the following argument do in the build command of ORFS: —openroad-args STRING?,The '—openroad-args STRING' argument adds aditional compilation flags for OpenROAD app compilation.
+What is the purpose of the following argument in the build command of ORFS: —lsoracle-enable?,This argument initiates compiling LSOracle since it is disabled by default as it is not currently used on the flow.
+What does the following argument do in the build command of ORFS: —lsoracle-args-overwrite?,The '—lsoracle-args-overwrite' argument stipulates not to use default flags set by this script during LSOracle compilation.
+What does the following argument achieve in the build command of ORFS: —lsoracle-args STRING?,This argument adds aditional compilation flags for LSOracle compilation.
+What function does the following argument serve in the build command of ORFS: —install-path PATH?,The '—install-path PATH' delineates the path to install tools. Default is ${INSTALL_PATH}.
+What does the following argument do in the build command of ORFS: —clean?,The '—clean' argument calls the git clean command interactively before compiling. It is useful to remove old build files.
+What does the following argument do in the build command of ORFS: —clean-force?,This '—clean-force' argument will call git clean before compiling but WARNING: this option will not ask for confirmation. It is useful to remove old build files.
+What function does the following argument serve in the build command of ORFS: -c or --copy-platforms?,This argument is only applicable to docker builds. It is used to copy platforms inside the docker image.
+What does the following argument do in the build command of ORFS: —docker-args-overwrite?,The ' —docker-args-overwrite' argument is only applicable for docker builds. They specify to not use default flags set by this script for Docker builds.
+What does the following argument do in the build command of ORFS: —docker-args STRING?,This argument is only applicable to docker builds. It is used to add additional compilation flags for the Docker build.
+What is OpenROAD?,"The OpenROAD (""Foundations and Realization of Open, Accessible Design"") Project was launched in June 2018 within the DARPA IDEA program. OpenROAD aims to bring down the barriers of cost, expertise, and unpredictability that currently block designers' access to hardware implementation in advanced technologies. The project team is developing a fully autonomous, open-source toolchain for digital SoC layout generation, focusing on the RTL-to-GDSII phase of system-on-chip design. Thus, OpenROAD holistically attacks the multiple facets of today's design cost crisis: engineering resources, design tool licenses, project schedule, and risk."
+What is AutoTuner?,"AutoTuner is a ""no-human-in-loop"" parameter tuning framework for commercial and academic RTL-to-GDS flows. AutoTuner provides a generic interface where users can define parameter configuration as JSON objects. This enables AutoTuner to easily support various tools and flows. AutoTuner also utilizes METRICS2.1 to capture PPA of individual search trials. With the abundant features of METRICS2.1, users can explore various reward functions that steer the flow autotuning to different PPA goals."
+WHat are the current supported search algorithms by AutoTuner?,"AutoTuner contains top-level Python script for ORFS, each of which implements a different search algorithm. Current supported search algorithms are as follows:
+Random/Grid Search, Population Based Training (PBT), Tree Parzen Estimator (HyperOpt), Bayesian + Multi-Armed Bandit (AxSearch), Tree Parzen Estimator + Covariance Matrix Adaptation Evolution Strategy (Optuna), Evolutionary Algorithm (Nevergrad)"
+How to set the direction of tuning in AutoTuner?,"User-defined coefficient values (coeff_perform, coeff_power, coeff_area) of three objectives to set the direction of tuning are written in the script. Each coefficient is expressed as a global variable at the get_ppa function in PPAImprov class in the script (coeff_perform, coeff_power, coeff_area). Efforts to optimize each of the objectives are proportional to the specified coefficients."
+What environment is required for AutoTuner?,"To set up AutoTuner, make sure you have a virtual environment set up with Python 3.9.X. There are plenty of ways to do this, we recommend using Miniconda, which is a free minimal installer for the package manager conda."
+Which parameters/variables can be used for tune or sweep?,Any variable that can be set from the command line can be used for tune or sweep.
+How to add verilog designs to ORFS repository for a full RTL-GDS flow execution?,The following design example is based on the design spm that implements a Single-port memory using gf180 platform. This procedure applies to any design for a given platform you choose. Start from the base directory OpenROAD-flow-scripts/flow. Step 1: Create the Verilog source files directory based on the top module name. Step 2: Create config.mk to define design configuration. Step 3: Define key design parameters in config.mk. Step 4: Define SDC constraints. Step 5: Add the design name to Makefile to run the flow with the make command.
+"While designing spm that implements a Single-port memory using gf180 platform, what can be the value of the following parameter, export PLATFORM?","While designing spm that implements a Single-port memory using gf180 platform, the export PLATFORM value can be gf180."
+"While designing spm that implements a Single-port memory using gf180 platform, what can be the value of the following parameter, export DESIGN_NAME?","While designing spm that implements a Single-port memory using gf180 platform, the value of the parameter, export DESIGN_NAME can be spm."
+"While designing spm that implements a Single-port memory using gf180 platform, what can be the value of the following parameter, export VERILOG_FILES?","For the value of export VERILOG_FILES parameter while designing spm that implements a Single-port memory using gf180 platform, it can be $(sort $(wildcard ./designs/src/$(DESIGN_NICKNAME)/*.v))"
+"While designing spm that implements a Single-port memory using gf180 platform, what can be the value of the following parameter, export SDC_FILE?","The parameter, export SDC_FILE can have the value ./designs/$(PLATFORM)/$(DESIGN_NICKNAME)/constraint.sdc  while designing spm that implements a Single-port memory using gf180 platform"
+"While designing spm that implements a Single-port memory using gf180 platform, what can be the value of the following parameter, export CORE_UTILIZATION?", The value of CORE_UTILIZATION may be subjective but one value for CORE_UTILIZATION while designing spm that implements a Single-port memory using gf180 platform40
+"While designing spm that implements a Single-port memory using gf180 platform, what can be the value of the following parameter, export PLACE_DENSITY    ","The value of the parameter, export PLACE_DENSITY while designing spm that implements a Single-port memory can be 0.6."
+"While designing spm that implements a Single-port memory using gf180 platform, what can be the value of the following parameter, export TNS_END_PERCENT?","The value of the parameter, export TNS_END_PERCENT while designing spm that implements a Single-port memory can be 100."
+What is the function of the Environment Variables for the OpenROAD Flow Scripts?,"Environment variables are used in the OpenROAD flow to define various platform, design, and tool-specific variables to allow finer control and user overrides at various flow stages. These are defined in the config.mk file located in the platform and design-specific directories."
+"What does the general variables for all stages, SKIP_REPORT_METRICS do?","The SKIP_REPORT_METRICS general variable if set to 1, then metrics, report_metrics does nothing. This is useful to speed up builds."
+"Can you explain the usage of the Library Setup variable, PROCESS?","The variable, PROCESS signifies a technology node or process in use."
+"What is the function of the Library Setup variable, CORNER?",This CORNER variable specifies the Library to select based on corner BC/TC/WC.
+"What is the description of Library Setup variable, TECH_LEF","This variable, TECH_LEF, stipulates a technology LEF file of the PDK that includes all relevant information regarding metal layers, vias, and spacing requirements."
+"What is the description of Library Setup variable, SC_LEF",SC_LEF is used to specify the path to the technology standard cell LEF file.
+"What is the function of the Library Setup variable, GDS_FILES",GDS_FILES specifies the path to platform GDS files.
+"What is the description of Library Setup variable, LIB_FILES","LIB_FILES enumerates a Liberty file of the standard cell library with PVT characterization, input and output characteristics, timing, and power definitions for each cell."
+"Can you explain the usage of the Library Setup variable, DONT_USE_CELLS?","In OpenROAD Flow Scripts, the DONT_USE_CELLS variable stores a list of cells to avoid when performing both synthesis and place & route. Basic wildcard patterns (*) are supported. You may want to mark a cell as dont_use for several reasons, including 1) some cells may have complicated pin access patterns which are more likely to cause design rule violations during detailed routing, 2) some cells may be more prone to manufacturing variation, and will cause difficulty to close timing constraints, 3) A designer may not want to use certain cells during the implementation flow."
+"What does the following Synthesis variable, SYNTH_HIERARCHICAL do?","The variable  SYNTH_HIERARCHICAL enables synthesis hierarchically, otherwise considered flat synthesis."
+"What does the following Synthesis variable, LATCH_MAP_FILE do?",LATCH_MAP_FILE variable specifies the list of latches treated as a black box by Yosys.
+"What does the following Synthesis variable, CLKGATE_MAP_FILE do?",This variable specifies a list of cells for the gating clock treated as a black box by Yosys.
+"Can you explain the usage of this Synthesis variable, ADDER_MAP_FILE?",List of adders treated as a black box by Yosys.
+"What does the following Synthesis variable, TIEHI_CELL_AND_PORT do?","The variable, TIEHI_CELL_AND_PORT is used to tie high cells used in Yosys synthesis to replace a logical 1 in the Netlist."
+"What does the following Synthesis variable, TIELO_CELL_AND_PORT do?",This variable is used to tie low cells used in Yosys synthesis to replace a logical 0 in the Netlist.
+"What does the following Synthesis variable, MIN_BUF_CELL_AND_PORTS do?",The MIN_BUF_CELL_AND_PORTS variable is used to insert a buffer cell to pass through wires. Used in synthesis.
+"What does the following Synthesis variable, ABC_CLOCK_PERIOD_IN_PS do?","The variable,  ABC_CLOCK_PERIOD_IN_PS is used to specify the clock period to be used by STA during synthesis. Default value read from constraint.sdc."
+"What does the following Synthesis variable, ABC_DRIVER_CELL do?",Default driver cell used during ABC synthesis.
+"What does the following Synthesis variable, ABC_LOAD_IN_FF do?","During synthesis, the set_load value specified by this, ABC_LOAD_IN_FF variable is used."
+"What does the following Synthesis variable, MAX_UNGROUP_SIZE do?","For hierarchical synthesis, this variable ungroups modules of the size given by this variable."
+"Tell me about the Floorplan variable, FLOORPLAN_DEF?",FLOORPLAN_DEF is used to specify the use of the DEF file to initialize floorplan.
+"Elaborate on the Floorplan variable, PLACE_SITE?",Placement site for core cells defined in the technology LEF file.
+"Describe the use this Floorplan variable, TAPCELL_TCL?",TAPCELL_TCL specifies the path to the Endcap and Welltie cells file.
+"What is the function of the Floorplan variable, RTLMP_FLOW?","This variable, RTLMP_FLOW enables the Hierarchical RTLMP flow. By default it is disabled."
+"Tell me about the Floorplan variable, MACRO_HALO?","MACRO_HALO specifies to keep out a distance from macro, in X and Y, to standard cell row."
+"Tell me about the Floorplan variable, MACRO_PLACEMENT?",MACRO_PLACEMENT specifies the path of a file on how to place certain macros manually using read_macro_placement.
+"Elaborate on the Floorplan variable, MACRO_PLACEMENT_TCL?",This variable specifies the path of a TCL file on how to place certain macros manually.
+"Describe the Floorplan variable, MACRO_PLACE_HALO?",Horizontal /vertical halo around macros (microns). Used by automatic macro placement.
+"Tell me about the Floorplan variable, MACRO_PLACE_CHANNEL?",Horizontal/vertical channel width between macros (microns). Used by automatic macro placement when RTLMP_FLOW is disabled. Imagine channel=10 and halo=5. Then macros must be 10 apart but standard cells must be 5 away from a macro.
+"Give me details on the Floorplan variable, MACRO_BLOCKAGE_HALO?",Blockage width overridden from default calculation.
+"Inform me about the Floorplan variable, PDN_TCL?","This variable specifies the file path which has a set of power grid policies used by pdn to be applied to the design, such as layers to use, stripe width and spacing to generate the actual metal straps."
+"Tell me about the Floorplan variable, MAKE_TRACKS.",MAKE_TRACKS variable outlines the Tcl file that defines adding routing tracks to a floorplan.
+"What is the function of the Floorplan variable, IO_PLACER_H?",The metal layer on which to place the I/O pins horizontally (top and bottom of the die).
+"Inform me about the Floorplan variable, IO_PLACER_V?",The metal layer on which to place the I/O pins vertically (sides of the die).
+"Tell me about the Floorplan variable, GUI_NO_TIMING?",Skip loading timing for a faster GUI load.
+"Give me a description for the following ‘Placement’ tool variable, HAS_IO_CONSTRAINTS?",Skip the initial non-IO based global placement if IO constraints are present.
+"Tell me about the ‘Placement’ tool variable, CELL_PAD_IN_SITES_GLOBAL_PLACEMENT?",Cell padding on both sides in site widths to ease routability during global placement.
+"What does this ‘Placement’ tool variable, CELL_PAD_IN_SITES_DETAIL_PLACEMENT do?",Cell padding on both sides in site widths to ease routability in detail placement.
+"Give me a description for the following ‘Placement’ tool variable, PLACE_DENSITY?",The desired placement density of cells. It reflects how spread the cells would be on the core area. 1.0 = closely dense. 0.0 = widely spread.
+"What does this ‘Placement’ tool variable, PLACE_DENSITY_LB_ADDON do?",Check the lower boundary of the PLACE_DENSITY and add PLACE_DENSITY_LB_ADDON if it exists.
+"State the function of this OpenROAD ‘Placement’ tool variable, REPAIR_PDN_VIA_LAYER?",Remove power grid vias which generate DRC violations after detailed routing.
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, GLOBAL_PLACEMENT_ARGS?",Use additional tuning parameters during global placement other than default args defined in gloabl_place.tcl.
+"What does this OpenROAD ‘Placement’ tool variable, ENABLE_DPO do?",Enable detail placement with improve_placement feature.
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, DPO_MAX_DISPLACEMENT?",Specifies how far an instance can be moved when optimizing.
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, GPL_TIMING_DRIVEN?","In OpenROAD Flow Scripts (ORFS), the GPL_TIMING_DRIVEN variable specifies whether the global placer (gpl) should use timing driven-placement. Timing-driven placement will cause gpl to ocassionally run static timing analysis (sta) during placement in order to determine the timing on each net. gpl will then reweight the nets based on how timing-critical they are. This process improves the timing of the netlist by decreasing the distance between timing-critical cells, but it also causes an increase in gpl runtime due to running timing analysis."
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, GPL_ROUTABILITY_DRIVEN?","In OpenROAD Flow Scripts (ORFS), the GPL_ROUTABILITY_DRIVEN variable specifies whether the global placer (gpl) should use routability driven-placement. Routability-driven placement will cause gpl to ocassionally run global routing (grt) during placement in order to determine routing congestion hotspots. gpl will then reweight the nets based on how congestion data. This process improves the routability of the netlist by spacing out cells in routing congested areas, but it also causes an increase in gpl runtime due to running global routing."
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, CAP_MARGIN?",Specifies a capacitance margin when fixing max capacitance violations. This option allow you to overfix.
+"Give me a description for the following OpenROAD ‘Placement’ tool variable, SLEW_MARGIN?",Specifies a slew margin when fixing max slew violations. This option allow you to overfix.
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, CTS_ARGS?",Override clock_tree_synthesis arguments
+What does CTS_BUF_CELL do in ORFS?,The CTS_BUF_CELL variable sets the root buffer cell used in the clock tree during clock tree synthesis (CTS)
+What is the use of the ORFS variable FILL_CELLS?,The FILL_CELLS variable holds a list of cell names to use as filler cells. Wildcard patterns (*) are supported. Fill cells are used to fill empty cell sites which aids in satisfying design rules and density rules.
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, HOLD_SLACK_MARGIN?",Specifies a time margin for the slack when fixing hold violations. This option allow you to overfix.
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, SETUP_SLACK_MARGIN?",Specifies a time margin for the slack when fixing setup violations.
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, SKIP_GATE_CLONING?",Do not use gate cloning transform to fix timing violations (default: use gate cloning)
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, SKIP_PIN_SWAP?",Do not use pin swapping as a transform to fix timing violations (default: use pin swapping)
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, TNS_END_PERCENT?","In OpenROAD Flow Scripts, the TNS_END_PERCENT variable specifies what percent of violating timing paths will be fixed during timing optimization. TNS_END_PERCENT must be a floating point value between 0-100. However, even if TNS_END_PERCENT is 0, the worst path will always be fixed. The purpose of this flag is to allow the user some control over how much runtime and logic area is spent on timing optimization, with a higher value leading to more runtime/area and a lower value leading to less runtime/area."
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, EQUIVALENCE_CHECK?","In OpenROAD Flow Scripts, the EQUIVALENCE_CHECK variable toggles whether a logical equivalence check is run after timing optimization to ensure logical correctness of the circuit. If EQUIVALENCE_CHECK is 1, the check is performed. If EQUIVALENCE_CHECK is any other value or unset, the check is not run. The default value is unset."
+"What is the use of the following OpenROAD Clock Tree Synthesis (CTS) variable, REMOVE_CELLS_FOR_EQY?","In OpenROAD Flow Scripts, the REMOVE_CELLS_FOR_EQY variable sets the list of cells to remove from the verilog netlist file produced specifically for netlist equivalence checking. Netlist equivalence checking is performed with the Yosys EQY tool. Wildcard patterns (*) are supported. This variable is passed directly to write_verilog -remove_cells <>."
+What does the create_power_domain command do in upf?,This command creates power domain for a group of modules.
+What does the create_logic_port command do in upf?,"This command creates logic port. Direction must be specified from: in, out, inout."
+What does restructuring do?,"Restructuring (the rst module) uses logic resynthesis to optimize combinational logic paths. Restructuring can be performed in either area or delay mode. Area mode will optimize the logic cell area of the paths, whereas delay mode will optimize for delay. An Area Mode Example: restructure -liberty_file ckt.lib -target area -tielo_pin ABC -tiehi_pin DEF. For Timing Mode Example: restructure -liberty_file ckt.lib -target delay -tielo_pin ABC -tiehi_pin DEF -slack_threshold 1 -depth_threshold 2."
+What is the difference between Yosys and OpenROAD?,Yosys is a logic synthesis tool which is responsible for transforming register transfer-level (RTL) code into a gate-level netlist. OpenROAD is a place and route (P&R) tool which is responsible for implementing a gale-level netlist into a chip layout. Yosys is developed by the YosysHQ organization whereas OpenROAD is developed by The OpenROAD Project. OpenROAD Flow Scripts (ORFS) makes use of both of these tools (as well as KLayout) to form a full RTL-to-GDS flow.
+Is there a way of knowing which instances were modified by resize command ?,"The Resizer module (rsz) can modify the netlist by inserting or removing buffers, as well as increasing or decreasing the drive strength of cells. rsz does not save a log of which instances were modified, because it would create an excessively long log file. A recommended workaround solution would be to save a layout file (such as DEF or ODB) before performing resizing, and then compare it to a layout file after resizing."
+How can I improve runtime?,"In OpenROAD, the runtime of the software is directly related to 1) the modeling accuracy and 2) the circuit optimization effort. Improving runtime is usually a tradeoff of one of these two categories. If you are comfortable with reducing optimization effort, such as when performing design space exploration, you could try the following techniques: 1) Relaxing timing constraints in the SDC file, 2) skipping unnesessary optimization routines, such as setup and hold time fixing, 3) Stopping the design flow early, such as after the placement step or clock tree synthesis (CTS) step."
+Why does my design take so long?,"In OpenROAD, the runtime of the design can be affected by several factors: 1) the size of the netlist. Designs with a large number of instances (100k or more) can take significantly longer than small designs. 2) the physical area of the design. Designs with large die areas (~1 mm^2 or larger) can take longer because of having to store the die size in memory. 3) improper timing constraints. Designs with excessive timing constaints can cause optimization algorithms, particularly Resizer (rsz) to take excessively long. 4) host machine constraints. Large designs can require a large amount of RAM to run. If the required memory exceeds your machine's available memory, the runtime will be significantly increased. Additionally, OpenROAD scales well with core count, so using a CPU with a greater number of cores can improve runtime."
+What is DBU?,"In OpenROAD, database units (DBU) are an integer representation of distance on a chip. In the LEF/DEF format, each technology specifies a conversion factor in terms of DBU/micron. For example, if a technology used a conversion factor of 2000 DBU/micron, that would mean that each DBU represents 0.0005 micron or 0.5 nm. The purpose for using DBU is that it enables faster calculation and no loss of precision compared to floating point representations."
+How do I convert from DBU?,"In OpenROAD, an integer DBU value can be converted to a floating point micron value by using the ord::dbu_to_microns function"
+How to access GUI,OpenROAD's GUI can be started in two ways. One is to use the -gui flag when invoking OpenROAD from the command line (e.g. openroad -gui). The other option is to use the gui::show function from inside the openroad command interpreter.
+Is there a simple way to open the GUI in ORFS?,"OpenROAD Flow Scripts (ORFS) includes Makefile targets to open the GUI after each step. You can use the command make gui_*, where * is the name of the flow step (e.g. make_floorplan)."
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
+,
