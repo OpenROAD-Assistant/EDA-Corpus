@@ -31532,7 +31532,7 @@ pdngen_obj = design.getPdnGen()
 # Find the VDD net
 VDD_net = design.getBlock().findNet(""VDD"")
 # Rip up the VDD grids
-pdn_obj.ripUp(VDD_net)",Rip up the VDD grids
+pdngen_obj.ripUp(VDD_net)",Rip up the VDD grids
 "import openroad as ord
 from openroad import Tech, Design
 import os, odb, drt, pdn, re
