@@ -31890,8 +31890,7 @@ triton_route = design.getTritonRoute()
 # Get the number of DRVs
 num_drvs = triton_route.getNumDRVs()
 
-# Set the cloud size to 500
-cloud_size = triton_route.setCloudSize(500)def get_and_set_drv_and_cloud_size(cloud_size_value):
+def get_and_set_drv_and_cloud_size(cloud_size_value):
     # Get the Triton Route object of the design
     triton_route = design.getTritonRoute()
 
